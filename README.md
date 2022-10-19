@@ -22,9 +22,12 @@
 
 那么自己的项目如何使用呢?
 
-1.下载工具,2.下载蓝湖导出的HTML代码,3.工具将蓝湖的代码处理一下就OK了
+1.下载项目源码,打开index.html,点击切换页面,将你自己的蓝湖页面代码复制进去就可以了
 
-再打开处理过的HTML文件,就如上图所示了,功能都有了
+![image](https://user-images.githubusercontent.com/20348189/196596391-c398f6f7-9ddb-4d67-89d3-2e51bc098d93.png)
+
+![image](https://user-images.githubusercontent.com/20348189/196596407-9cefbd1a-da32-48c5-8167-733b5a1920a1.png)
+
 
 
 
