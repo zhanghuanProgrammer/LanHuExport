@@ -113,7 +113,7 @@
     document.writeln("				2.支持Flutter语言模板生成<br>");
     document.writeln("				3.支持用户自定义语言模板<br><br>");
     document.writeln("				备注:使用中如有疑问或Bug,可查看帮助,或加QQ群:481431442(无需验证),或联系开发者微信号:13077821373(无需验证),如若未能即时回复,请谅解<br><br>");
-    document.writeln("				开源地址1:<a href=\"https://download.csdn.net/download/qq_35166501/86565258?spm=1001.2014.3001.5503\" target=\"_blank\">GitHub开源地址</a><br>");
+    document.writeln("				开源地址1:<a href=\"https://github.com/zhanghuanProgrammer/LanHuExport\" target=\"_blank\">GitHub开源地址</a><br>");
     document.writeln("				开源地址2:<a href=\"https://download.csdn.net/download/qq_35166501/86565258?spm=1001.2014.3001.5503\" target=\"_blank\">CSDN资源下载(不需要币),GitHub访问不了时请从这里下载</a>");
     document.writeln("			</p>");
     document.writeln("		</div>");
