@@ -1,0 +1,46 @@
+
+//------------------- 自动识别和一些必要逻辑 模块 -------------------
+
+/**
+ * 自动识别button按钮
+ */
+function auto_discern_button_fun(views) {
+    if (views && views.length > 0){
+        for (let i = 0; i < views.length; i++) {
+            var view = views[i];
+            if (view){
+                if (isTextView(view)){
+
+                }
+                var tagName = view["tagName"];
+                if (tagName){
+                    tagName = tagName.toLowerCase();
+                    if (tagName == "button"){
+                        var viewType = "";
+                        viewType = "button";
+                        if (viewType && viewType.length > 0)view["viewType"] = viewType;
+                    }
+                }
+                var childs = view["views"];
+                auto_discern_button_fun(childs);
+            }
+        }
+    }
+}
+
+/**
+ * 自动识别和处理一些事情
+ */
+function auto_discern_and_do_something() {
+    if (!can_auto_do_something)return;
+    var views = conversionViewsPure();
+    if (views == null) return;
+
+    if (auto_discern_button){
+        auto_discern_button_fun(views);
+    }
+}
+
+auto_discern_and_do_something();
+
+//------------------- 自动识别和一些必要逻辑 模块 -------------------

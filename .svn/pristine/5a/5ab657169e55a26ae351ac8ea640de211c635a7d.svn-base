@@ -1,0 +1,853 @@
+
+
+
+//------------------- 安卓导出 模块 -------------------
+
+
+/**
+ * 添加属性
+ */
+function addKeyValue_android(info,key,value){
+    if (info && key && value){
+        info[key] = value;
+    }
+}
+
+/**
+ * 去除像素单位
+ */
+function remove_px_android(text){
+    if (text.includes("px")){
+        text = text.replace("px","");
+    }
+    return text;
+}
+
+/**
+ * 提起RGBA
+ */
+function getRGBA_android(color){
+    if (color && color.includes("rgba(")){
+        //提取rgba
+        var rgbaStr = mid("rgba(",")",color);
+        rgbaStr = rgbaStr.replaceAll(" ","");
+        var arr = rgbaStr.split(",");
+        return arr;
+    }
+    if (color && color.includes("rgb(")){
+        //提取rgba
+        var rgbaStr = mid("rgb(",")",color);
+        rgbaStr = rgbaStr.replaceAll(" ","");
+        var arr = rgbaStr.split(",");
+        arr.push("1");
+        return arr;
+    }
+    return new Array();
+}
+
+/**
+ * 控件是否隐藏
+ */
+function isVisible_android(map){
+    var visibility = map["visibility"];
+    if (visibility && visibility == "hidden"){
+        return false;
+    }
+    return true;
+}
+
+/**
+ * class_name
+ */
+function set_class_name_android(info,map){
+    var className = map["className"];
+    if (className && className.length > 0){
+        info["className"] = className;
+    }
+}
+
+/**
+ * parent
+ */
+function set_parent_android(info,map){
+    var parent = map["parent"];
+    if (parent && parent.length > 0){
+        info["parent"] = parent;
+    }else {
+        info["parent"] = "";
+    }
+}
+
+/**
+ * tagName
+ */
+function set_tagName_android(info,map){
+    var tagName = map["tagName"];
+    if (tagName){
+        if (tagName.length > 0)info["tagName"] = tagName;
+    }
+}
+
+/**
+ * visibility
+ */
+function set_visibility_android(info,map){
+    var visibility = map["visibility"];
+    if (visibility){
+        if (visibility.length > 0)info["visibility"] = visibility;
+    }
+}
+
+/**
+ * window_x
+ */
+function set_window_x_android(info,map){
+    var window_x = map["window_x"];
+    if (window_x && window_x.length > 0){
+        info["window_x"] = window_x;
+    }
+}
+
+/**
+ * window_y
+ */
+function set_window_y_android(info,map){
+    var window_y = map["window_y"];
+    if (window_y && window_y.length > 0){
+        info["window_y"] = window_y;
+    }
+}
+
+/**
+ * 背景颜色
+ */
+function set_bgcolor_android(info,map){
+    var background_color = map["background_color"];
+    if (background_color){
+        var rgba = getRGBA_android(background_color);
+        if (rgba.length > 0)addKeyValue_android(info,"bgColorRed",rgb_div_255(rgba[0]));
+        if (rgba.length > 1)addKeyValue_android(info,"bgColorGreen",rgb_div_255(rgba[1]));
+        if (rgba.length > 2)addKeyValue_android(info,"bgColorBlue",rgb_div_255(rgba[2]));
+        if (rgba.length > 3)addKeyValue_android(info,"bgColorAlpha",rgb_div_255(rgba[3]));
+        if (rgba.length > 0)addKeyValue_android(info,"bgColor",rgba_to_hex(rgba));
+    }
+}
+
+/**
+ * textColor
+ */
+function set_textcolor_android(info,map){
+    var text_color = map["text_color"];
+    if (text_color){
+        var rgba = getRGBA_android(text_color);
+        if (rgba.length > 0)addKeyValue_android(info,"textColorRed",rgb_div_255(rgba[0]));
+        if (rgba.length > 1)addKeyValue_android(info,"textColorGreen",rgb_div_255(rgba[1]));
+        if (rgba.length > 2)addKeyValue_android(info,"textColorBlue",rgb_div_255(rgba[2]));
+        if (rgba.length > 3)addKeyValue_android(info,"textColorAlpha",rgb_div_255(rgba[3]));
+        if (rgba.length > 0)addKeyValue_android(info,"textColor",rgba_to_hex(rgba));
+    }
+}
+
+/**
+ * text
+ */
+function set_text_android(info,map){
+    var text = map["text"];
+    if (text){
+        if (text.length > 0)addKeyValue_android(info,"text",text);
+    }
+}
+
+/**
+ * font 文字大小
+ */
+function set_font_size_android(info,map){
+    var font_size = map["font_size"];
+    if (font_size){
+        if (font_size.length > 0)addKeyValue_android(info,"font",remove_px_android(font_size));
+    }
+}
+
+/**
+ * x
+ */
+function set_x_android(info,map){
+    var x = map["left"];
+    var margin_left = map["margin_left"];
+    if (x || margin_left){
+        var x_v = parseFloat(numValue(remove_px_android(x)));
+        var margin_left_v = parseFloat(numValue(remove_px_android(margin_left)));
+        var max = Math.max(x_v,margin_left_v);
+        info["x"] = max + "";
+    }
+}
+
+/**
+ * y
+ */
+function set_y_android(info,map){
+    var y = map["top"];
+    var margin_top = map["margin_top"];
+    if (y || margin_top){
+        var y_v = parseFloat(numValue(remove_px_android(y)));
+        var margin_top_v = parseFloat(numValue(remove_px_android(margin_top)));
+        var max = Math.max(y_v,margin_top_v);
+        info["y"] = max + "";
+    }
+}
+
+/**
+ * right
+ */
+function set_right_android(info,map){
+    var right = map["right"];
+    var margin_right = map["margin_right"];
+    if (right || margin_right){
+        var right_v = parseFloat(numValue(remove_px_android(right)));
+        var margin_right_v = parseFloat(numValue(remove_px_android(margin_right)));
+        var max = Math.max(right_v,margin_right_v);
+        info["right"] = max + "";
+    }
+}
+
+/**
+ * bottom
+ */
+function set_bottom_android(info,map){
+    var bottom = map["bottom"];
+    var margin_bottom = map["margin_bottom"];
+    if (bottom || margin_bottom){
+        var bottom_v = parseFloat(numValue(remove_px_android(bottom)));
+        var margin_bottom_v = parseFloat(numValue(remove_px_android(margin_bottom)));
+        var max = Math.max(bottom_v,margin_bottom_v);
+        info["bottom"] = max + "";
+    }
+}
+
+/**
+ * width
+ */
+function set_width_android(info,map){
+    var width = map["width"];
+    if (width){
+        if (width.length > 0)info["width"] = numValue(remove_px_android(width));
+    }
+}
+
+function get_width_android(map){
+    var width = map["width"];
+    if (width && width.length > 0){
+        return parseFloat(numValue(remove_px_android(width)));
+    }
+    return 0;
+}
+
+/**
+ * width for textView
+ */
+function set_width_for_textView_android(info,map){
+    if (isTextView_android(map)){
+        var width = map["width"];
+        if (width){
+            if (width.length > 0)info["width"] = "" + (parseFloat(numValue(remove_px_android(width))) + 2.5);
+        }
+    }
+}
+
+/**
+ * height
+ */
+function set_height_android(info,map){
+    var height = map["height"];
+    if (height){
+        if (height.length > 0)info["height"] = numValue(remove_px_android(height));
+    }
+}
+
+function get_height_android(map){
+    var height = map["height"];
+    if (height && height.length > 0){
+        return parseFloat(numValue(remove_px_android(height)));
+    }
+    return 0;
+}
+
+/**
+ * idStr
+ */
+function set_idStr_android(info,map){
+    var idStr = xml_idStr();
+    info["idStr"] = idStr;
+}
+
+function isImg_android(map){
+    var src = map["src"];
+    var background = map["background"];
+    if (src && src.includes("/img/"))return true;
+    if (background && background.includes("/img/"))return true;
+    return false;
+}
+
+function isImgDiv_android(map){
+    if (map && map["image"]){
+        var tagName = map["tagName"];
+        if (tagName){
+            tagName = tagName.toLowerCase();
+            if (tagName == "div") {//特殊一点
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+function isView_android(map){
+    if (map){
+        var tagName = map["tagName"];
+        if (tagName){
+            tagName = tagName.toLowerCase();
+            if (tagName == "div") {//特殊一点
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+/**
+ * viewType
+ */
+function set_viewType_android(info,map){
+    var viewType = map["viewType"];
+    if (viewType){
+        if (viewType.length > 0)info["viewType"] = viewType;
+    }else {
+        var tagName = map["tagName"];
+        if (tagName){
+            tagName = tagName.toLowerCase();
+            if (tagName == "div") {//特殊一点
+                if(isImg_android(map)) viewType = "imageView";
+                else viewType = "relativeLayout";
+            }
+            if (tagName == "span") viewType = "textView";
+            if (tagName == "img") viewType = "imageView";
+            if (viewType.length > 0)info["viewType"] = viewType;
+        }
+    }
+}
+
+/**
+ * image
+ */
+function set_image_android(info,map){
+    if(isImg_android(map)) {
+        var imgurl = "";
+        var src = map["src"];
+        var background = map["background"];
+        if (src && src.includes("/img/")) imgurl = src;
+        if (background && background.includes("/img/")) imgurl = background;
+        if (imgurl.length <= 0)return;
+        imgurl = imgurl += ".";
+        var imageName = mid("/img/",".",imgurl);
+        if (imageName && imageName.length > 0)addKeyValue_android(info,"image",imageName.toLowerCase());
+    }
+}
+
+function isTextView_android(map){
+    var text = map["text"];
+    if (text && text.length > 0)return true;
+    return false;
+}
+
+/**
+ * font_family
+ * 需要适配很多字体
+ */
+function set_font_family_android(info,map){
+    if (isTextView_android(map)){
+        var font_family = map["font_family"];
+        if (font_family && font_family.length > 0){
+            if (font_family == "PingFangSC-Regular")addKeyValue_android(info,"font_family","sans-serif");
+            else if (font_family == "PingFangSC-Medium")addKeyValue_android(info,"font_family","sans-serif-medium");
+            else if (font_family == "PingFangSC-Semibold")addKeyValue_android(info,"font_family","sans-serif-black");
+            else if (font_family == "PingFangSC-Light")addKeyValue_android(info,"font_family","sans-serif-light");
+            else if (font_family.toLowerCase().includes("light"))addKeyValue_android(info,"font_family","sans-serif-light");
+            else if (font_family.toLowerCase().includes("semibold"))addKeyValue_android(info,"font_family","sans-serif-black");
+            else if (font_family.toLowerCase().includes("medium"))addKeyValue_android(info,"font_family","sans-serif-medium");
+            else if (font_family.toLowerCase().includes("bold"))addKeyValue_android(info,"font_family","sans-serif-medium");
+            else if (font_family.toLowerCase().includes("regular"))addKeyValue_android(info,"font_family","sans-serif");
+        }
+    }
+}
+
+/**
+ * text_align
+ */
+function set_text_align_android(info,map){
+    if (isTextView_android(map)){
+        var text_align = map["text_align"];
+        if (text_align && text_align.length > 0) {
+            if (text_align == "left") addKeyValue_android(info, "align", "left");
+            else if (text_align == "start") addKeyValue_android(info, "align", "left");
+            else if (text_align == "justify") addKeyValue_android(info, "align", "left");
+            else if (text_align == "match-parent") addKeyValue_android(info, "align", "left");
+            else if (text_align == "right") addKeyValue_android(info, "align", "right");
+            else if (text_align == "end") addKeyValue_android(info, "align", "right");
+            else if (text_align == "center") addKeyValue_android(info, "align", "center");
+            else addKeyValue_android(info, "align", "left");
+        }
+    }
+}
+
+/**
+ * border颜色
+ */
+function set_border_color_android(info,map){
+    var border_color = map["border"];
+    if (border_color){
+        if (border_color.includes("none"))return;
+        var rgba = getRGBA_android(border_color);
+        if (rgba.length > 0)addKeyValue_android(info,"borderColorRed",rgb_div_255(rgba[0]));
+        if (rgba.length > 1)addKeyValue_android(info,"borderColorGreen",rgb_div_255(rgba[1]));
+        if (rgba.length > 2)addKeyValue_android(info,"borderColorBlue",rgb_div_255(rgba[2]));
+        if (rgba.length > 3)addKeyValue_android(info,"borderColorAlpha",rgb_div_255(rgba[3]));
+        if (rgba.length > 0)addKeyValue_android(info,"borderColor",rgba_to_hex(rgba));
+    }
+}
+
+/**
+ * border radius
+ */
+function set_border_radius_android(info,map){
+    var border_radius = map["border_radius"];
+    if (border_radius && border_radius.length > 0){
+        if (border_radius.includes("%")) {
+            var height = map["height"];
+            if (height){
+                var heightV = parseFloat(numValue(remove_px_android(height)));
+                border_radius = border_radius.replaceAll("%","");
+                if (parseFloat(numValue(remove_px_android(border_radius))) > 0)
+                    addKeyValue_android(info,"border_radius",""+(heightV * border_radius / 100.0));
+            }
+        }
+        else {
+            if (parseFloat(numValue(remove_px_android(border_radius))) > 0)
+                addKeyValue_android(info, "border_radius", numValue(remove_px_android(border_radius)));
+        }
+    }
+}
+
+/**
+ * border width
+ */
+function set_border_width_android(info,map){
+    var border = map["border"];
+    if (border){
+        if (border.includes("none"))return;
+        var border_width = midR(" ",border);
+        if (border_width && border_width.length > 0) addKeyValue_android(info,"border_width",numValue(remove_px_android(border_width)));
+    }
+}
+
+/**
+ * 根据className查找控件
+ */
+function findView_android(views, className) {
+    if (views && views.length > 0 && className && className.length > 0){
+        for (let i = 0; i < views.length; i++) {
+            var view = views[i];
+            if (view){
+                if (view["className"] == className) return view;
+                var childs = view["views"];
+                if (childs && childs.length > 0){
+                    var target = findView_android(childs,className);
+                    if(target) return target;
+                }
+            }
+        }
+    }
+    return null;
+}
+
+/**
+ * 根据父控件查找子控件
+ */
+function findChildViews_android(views,className) {
+    var childViews = new Array();
+    if (views && views.length > 0 && className && className.length > 0){
+        for (let i = 0; i < views.length; i++) {
+            var map = views[i];
+            if (map && map["parent"] == className) childViews.push(map);
+        }
+    }
+    return childViews;
+}
+
+/**
+ * 根据子控件查找父控件
+ */
+function findParentView_android(views,className) {
+    if (views && views.length > 0 && className && className.length > 0){
+        for (let i = 0; i < views.length; i++) {
+            var map = views[i];
+            if (map && map["className"] == className) return map;
+        }
+    }
+    return null;
+}
+
+/**
+ * 因为控件都是相对父控件的相对位置,所以这里要进行绝对x,y计算
+ */
+function view_position_relative_x_y_android(parent,child) {
+    if (parent && child){
+        var window_x_parent = parent["window_x"];
+        var window_y_parent = parent["window_y"];
+        var window_x_child = child["window_x"];
+        var window_y_child = child["window_y"];
+        child["x"] = "" + (parseFloat(window_x_child) - parseFloat(window_x_parent));
+        child["y"] = "" + (parseFloat(window_y_child) - parseFloat(window_y_parent));
+    } else {
+        var window_x = child["window_x"];
+        var window_y = child["window_y"];
+        child["x"] = window_x;
+        child["y"] = window_y;
+    }
+}
+
+/**
+ * map复制
+ */
+function mapCopy_android(map) {
+    var map_copy = {};
+    $.each(map,function(key,value){
+        map_copy[key] = value;
+    });
+    return map_copy;
+}
+
+/**
+ * 特殊情况,明明是张图片,偏要用div显示,导致这个图片还可能有子控件,无法加到android_xml里面,因为imageview里是不允许有subviews的
+ */
+function imageview_position_relative_special_deal_android(views,view){
+    if (isImgDiv_android(view)){//明明是张图片,偏要用div显示
+        var className = view["className"];
+        var childViews = findChildViews_android(views,className);
+        if (childViews && childViews.length > 0){//还有子控件
+            //1.创建一个imageview子控件
+            var map_copy = mapCopy_android(view);
+            map_copy["className"] = map_copy["className"] + "copy";
+            map_copy["parent"] = view["className"];
+            map_copy["idStr"] = xml_idStr();
+            views.unshift(map_copy);
+            //2.将这个控件变换类型,变成view
+            view["viewType"] = "view";
+        }
+    }
+}
+
+/**
+ * 对控件进行父子归类,递归方法
+ */
+function view_position_relative_recursive_android(views,parents,parent){
+    if (views && views.length > 0 && parents && parents.length > 0){
+        //因为所有控件都是相对父控件的相对位置,所以这里要进行绝对x,y计算
+        for (let i = 0; i < parents.length; i++) {
+            var view = parents[i];
+            //特殊情况,明明是张图片,偏要用div显示,导致这个图片还可能有子控件,无法加到android_xml里面,
+            //因为imageview里是不允许有subviews的
+            imageview_position_relative_special_deal_android(views,view);
+
+            var className = view["className"];
+            view_position_relative_x_y_android(parent,view);
+            //开始递归
+            var childViews = findChildViews_android(views,className);
+            if (childViews && childViews.length > 0){
+                view["views"] = childViews;
+                view_position_relative_recursive_android(views,childViews,view);
+            }
+        }
+    }
+}
+
+/**
+ * 对控件进行父子归类
+ */
+function view_position_relative_android(views){
+    if (views && views.length > 0){
+        var parents = new Array();
+        for (let i = 0; i < views.length; i++) {
+            var map = views[i];
+            var parent = map["parent"];
+            var parentView = findParentView_android(views,parent);
+            if (parentView == null){
+                parents.push(map);
+            }
+        }
+        if (parents.length > 0){
+            view_position_relative_recursive_android(views,parents,null);
+            return parents;
+        }
+    }
+    return views;
+}
+
+/**
+ * 对隐藏控件进行父子归类,因为如果隐藏的控件是View,那所有子控件都需要重新指向父控件
+ */
+function view_deal_hide_position_relative_android(views){
+    if (views && views.length > 0){
+        for (let i = 0; i < views.length; i++) {
+            var view = views[i];
+            if (!isVisible_android(view)){
+                var childViews = findChildViews_android(views,view["className"]);
+                if (childViews && childViews.length > 0){
+                    for (let j = 0; j < childViews.length; j++) {
+                        var childView = childViews[j];
+                        childView.parent = view.parent;
+                    }
+                }
+            }
+        }
+    }
+}
+
+function conversionSetValue_android(map){
+    if (map == null)return null;
+    var info = {};
+    set_tagName_android(info,map);
+    set_visibility_android(info,map);
+    set_class_name_android(info,map);
+    set_parent_android(info,map);
+    set_bgcolor_android(info,map);
+    set_textcolor_android(info,map);
+    set_text_android(info,map);
+    set_font_size_android(info,map);
+    set_x_android(info,map);
+    set_y_android(info,map);
+    set_window_x_android(info,map);
+    set_window_y_android(info,map);
+    set_right_android(info,map);
+    set_bottom_android(info,map);
+    set_width_android(info,map);
+    set_width_for_textView_android(info,map);
+    set_height_android(info,map);
+    set_idStr_android(info,map);
+    set_viewType_android(info,map);
+    set_image_android(info,map);
+    set_font_family_android(info,map);
+    set_text_align_android(info,map);
+    set_border_color_android(info,map);
+    set_border_width_android(info,map);
+    set_border_radius_android(info,map);
+    return info;
+}
+
+/**
+ * 控件自定义名称
+ */
+function defineNameForView_android(info,defineName,defaultName) {
+    if(defineName && defineName.length > 0) {
+        info.defineName = defineName;
+    }
+    //如果没有自定义名字就赋值随机名字
+    if (defaultName && defaultName.length > 0){
+        if ((info["defineName"] == null || info["defineName"].length <= 0)){
+            var viewType = info.viewType;
+            if (viewType && viewType.length > 0)info["defineName"] = viewType + defaultName;
+        }
+    }
+}
+
+/**
+ * 控件类型切换
+ */
+function switchViewTypeForView_android(info,switchViewType) {
+    if(switchViewType && switchViewType.length > 0) {
+        if (!info["oriViewType"]) info["oriViewType"] = info.viewType;
+        info.viewType = switchViewType;
+    }
+}
+
+/**
+ * 控件合成
+ */
+function unionViewTypeForView_android(views,info,unionViewType) {
+    if(unionViewType && unionViewType.length > 0) {
+        //unionViewType 内容格式:className1,className2,unionViewType
+        var splits = unionViewType.split(",");
+        if (splits.length == 3){
+            var viewType = splits[2];
+            if (!info["oriViewType"]) info["oriViewType"] = info.viewType;
+            info.viewType = viewType;
+        }
+        if (isView_android(info)) {//如果是View,那就把合并对象的Label属性加上
+            if (splits.length == 3){
+                var className1 = splits[0];
+                var className2 = splits[1];
+                unionViewTypeForProperty_android(views,className1,className2);
+            }
+        }
+        return true;
+    }
+    return false;
+}
+
+/**
+ * 控件合成,文本属性进行复制
+ */
+function unionViewTypeForProperty_android(views,className1,className2) {
+    var view = findView_android(views,className1);
+    var label = findView_android(views,className2);
+    if (view && label){
+        if (label.text)view.text = label.text;
+        if (label.color)view.color = label.color;
+        if (label.text_color)view.text_color = label.text_color;
+        if (label.font_size)view.font_size = label.font_size;
+        if (label.font_family)view.font_family = label.font_family;
+        if (label.line_height)view.line_height = label.line_height;
+        if (label.text_align)view.text_align = label.text_align;
+        if (label.justify_content)view.justify_content = label.justify_content;
+        if (label.text_color)view.justify_content = label.justify_content;
+    }
+}
+
+/**
+ * 赋值自定义控件名,控件类型,控件合成类型
+ */
+function conversionSetDefineValue_android(views,needDefaultName) {
+    if (views && views.length > 0){
+        var newViews = new Array();
+        var defineNames = db_getAllDataForType(Save_Data_Type_Define_Name());
+        var switchViewTypes = db_getAllDataForType(Save_Data_Type_Switch_View_Type());
+        var unionViewTypes = db_getAllDataForType(Save_Data_Type_Union_View_Type());
+
+        for (let i = 0; i < views.length; i++) {
+            var info = views[i];
+            if (info == null)continue;
+            var className = info["className"];
+
+            //控件类型切换
+            var switchViewType = switchViewTypes[className];
+            switchViewTypeForView_android(switchViewType);
+
+            //控件合成
+            var unionViewType = unionViewTypes[className];
+            var isUnionSuccessful = unionViewTypeForView_android(views,info,unionViewType);
+
+            //赋值自定义控件名
+            var defineName = defineNames[className];
+            defineNameForView_android(info,defineName,needDefaultName ? (i + "") : "");
+
+            if (isUnionSuccessful && isTextView_android(info) && !isView_android(info)) {//如果是文本控件,那可以直接跳过,不需要继续添加
+                info.visibility = "hidden";
+                continue;
+            }
+
+            newViews.push(info);
+        }
+        return newViews;
+    }
+    return views;
+}
+
+/**
+ * 生成用于导出sb xml的JSON Map数据
+ */
+function conversionViews_android() {
+    var array = assembleProperty();
+    view_deal_hide_position_relative_android(array);
+    array = conversionSetDefineValue_android(array,false);//这一行的顺序不能后移
+    var views = new Array();
+    var mapRoot = {};
+    var maxW = 375,maxH = 667;
+    for (let i = 0; i < array.length; i++) {
+        var map = array[i];
+        var info = conversionSetValue_android(map);
+        if (isVisible_android(map))views.push(info);
+        if (get_width_android(info) > maxW)maxW = get_width_android(info);
+        if (get_height_android(info) > maxH)maxH = get_height_android(info);
+    }
+    views = view_position_relative_android(views);
+    mapRoot["views"] = views;
+    mapRoot["idStr"] = xml_idStr();
+    mapRoot["width"] = maxW;
+    mapRoot["height"] = maxH;
+    return mapRoot;
+}
+
+/**
+ * 生成用于操作的Views数组
+ */
+function conversionViewsPure_android() {
+    var array = assembleProperty();
+    view_deal_hide_position_relative_android(array);
+    array = conversionSetDefineValue_android(array,false);//这一行的顺序不能后移
+    var views = new Array();
+    for (let i = 0; i < array.length; i++) {
+        var map = array[i];
+        var info = conversionSetValue_android(map);
+        if (isVisible_android(map))views.push(info);
+    }
+    views = view_position_relative_android(views);
+    return views;
+}
+
+//转换成模板生成器需要的JSON数据格式
+function conversionTemplateJson_android(){
+    var mapJson = {};
+    mapJson["root"] = conversionViews_android();
+    var paramsJson = JSON.stringify(mapJson);
+    // console.log(paramsJson)
+    return paramsJson;
+}
+
+/**
+ * 导出整个xml
+ */
+function export_android() {
+    //main模板数据
+    var templateInputValue = document.getElementById('tmpl-android-xml').innerHTML.replace(/^\n|\s+$| {6}/g,'');
+    var ret = tmpl(templateInputValue, JSON.parse(conversionTemplateJson_android()));
+    ret = js_template_escape(ret);
+    ret = formatXml_android(ret);
+
+    //导出.storyboard
+    var zipToolStoryboard = new JSZip();
+    zipToolStoryboard.file("export.xml", ret);
+    zipToolStoryboard.generateAsync({
+        type: "blob"
+    }).then(function(content) {
+        saveAs(content, "export_android.zip");
+    });
+}
+
+/**
+ * 导出局部xml
+ * selView 当前选中的控件
+ * includeChild 是否要导出子控件
+ */
+function export_android_xml_for_view(selView,includeChild) {
+    if (selView){
+        // console.log(selView)
+        if (includeChild == false) delete selView["views"];
+        var templateViewsValue = document.getElementById('tmpl-android-views').innerHTML.replace(/^\n|\s+$| {6}/g,'');
+        var map = {};
+        var views = new Array();
+        views.push(selView);
+        map['root'] = views;
+        var ret = tmpl(templateViewsValue, map);
+        if (ret){
+            ret = js_template_escape(ret);
+            ret = formatXml_android_special(ret);
+            // console.log(ret)
+            return ret;
+        }
+    }
+    return "";
+}
+
+//------------------- 安卓导出 模块 -------------------
+
+
+

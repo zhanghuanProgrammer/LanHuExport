@@ -1,0 +1,267 @@
+
+
+
+
+//------------------- 导出公共模块 -------------------
+
+/**
+ * 是否是文本控件
+ */
+function isTextView(map){
+    var text = map["text"];
+    if (text && text.length > 0)return true;
+    return false;
+}
+
+/**
+ * 添加属性
+ */
+function addKeyValue(info,key,value){
+    if (info && key && value){
+        info[key] = value;
+    }
+}
+
+/**
+ * 去除像素单位
+ */
+function remove_px(text){
+    if (text.includes("px")){
+        text = text.replace("px","");
+    }
+    return text;
+}
+
+/**
+ * 控件是否隐藏
+ */
+function isVisible_view(map){
+    var visibility = map["visibility"];
+    if (visibility && visibility == "hidden"){
+        return false;
+    }
+    return true;
+}
+
+/**
+ * 提起RGBA
+ */
+function getRGBA(color){
+    if (color && color.includes("rgba(")){
+        //提取rgba
+        var rgbaStr = mid("rgba(",")",color);
+        rgbaStr = rgbaStr.replaceAll(" ","");
+        var arr = rgbaStr.split(",");
+        return arr;
+    }
+    if (color && color.includes("rgb(")){
+        //提取rgba
+        var rgbaStr = mid("rgb(",")",color);
+        rgbaStr = rgbaStr.replaceAll(" ","");
+        var arr = rgbaStr.split(",");
+        arr.push("1");
+        return arr;
+    }
+    return new Array();
+}
+
+/**
+ * class_name
+ */
+function set_attr_class_name(info, map){
+    var className = map["className"];
+    if (className && className.length > 0){
+        info["className"] = className;
+    }
+}
+
+/**
+ * parent
+ */
+function set_attr_parent(info, map){
+    var parent = map["parent"];
+    if (parent && parent.length > 0){
+        info["parent"] = parent;
+    }else {
+        info["parent"] = "";
+    }
+}
+
+/**
+ * tagName
+ */
+function set_attr_tagName(info, map){
+    var tagName = map["tagName"];
+    if (tagName){
+        if (tagName.length > 0)info["tagName"] = tagName;
+    }
+}
+
+/**
+ * define_values
+ */
+function set_attr_define_values(info, map, name){
+    var value = map[name];
+    if (value){
+        if (value.length > 0)info[name] = value;
+    }
+}
+
+/**
+ * visibility
+ */
+function set_visibility(info,map){
+    var visibility = map["visibility"];
+    if (visibility){
+        if (visibility.length > 0)info["visibility"] = visibility;
+    }
+}
+
+/**
+ * window_x
+ */
+function set_attr_window_x(info, map){
+    var window_x = map["window_x"];
+    if (window_x && window_x.length > 0){
+        info["window_x"] = window_x;
+    }
+}
+
+/**
+ * window_y
+ */
+function set_attr_window_y(info, map){
+    var window_y = map["window_y"];
+    if (window_y && window_y.length > 0){
+        info["window_y"] = window_y;
+    }
+}
+
+/**
+ * 背景颜色
+ */
+function set_attr_bgcolor(info, map){
+    var background_color = map["background_color"];
+    if (background_color){
+        var rgba = getRGBA(background_color);
+        if (rgba.length > 0)addKeyValue(info,"bgColorRed",rgb_div_255(rgba[0]));
+        if (rgba.length > 1)addKeyValue(info,"bgColorGreen",rgb_div_255(rgba[1]));
+        if (rgba.length > 2)addKeyValue(info,"bgColorBlue",rgb_div_255(rgba[2]));
+        if (rgba.length > 3)addKeyValue(info,"bgColorAlpha",rgb_div_255(rgba[3]));
+        if (rgba.length > 0)addKeyValue(info,"bgColor",rgba_to_hex(rgba));
+    }
+}
+
+/**
+ * textColor
+ */
+function set_attr_textcolor(info, map){
+    var text_color = map["text_color"];
+    if (text_color){
+        var rgba = getRGBA(text_color);
+        if (rgba.length > 0)addKeyValue(info,"textColorRed",rgb_div_255(rgba[0]));
+        if (rgba.length > 1)addKeyValue(info,"textColorGreen",rgb_div_255(rgba[1]));
+        if (rgba.length > 2)addKeyValue(info,"textColorBlue",rgb_div_255(rgba[2]));
+        if (rgba.length > 3)addKeyValue(info,"textColorAlpha",rgb_div_255(rgba[3]));
+        if (rgba.length > 0)addKeyValue(info,"textColor",rgba_to_hex(rgba));
+    }
+}
+
+/**
+ * text
+ */
+function set_attr_text(info,map){
+    var text = map["text"];
+    if (text){
+        if (text.length > 0)addKeyValue(info,"text",text);
+    }
+}
+
+/**
+ * font 文字大小
+ */
+function set_attr_font_size(info,map){
+    var font_size = map["font_size"];
+    if (font_size){
+        if (font_size.length > 0)addKeyValue(info,"font",remove_px(font_size));
+    }
+}
+
+/**
+ * x
+ */
+function set_attr_x(info,map){
+    var x = map["left"];
+    var margin_left = map["margin_left"];
+    if (x || margin_left){
+        var x_v = parseFloat(numValue(remove_px(x)));
+        var margin_left_v = parseFloat(numValue(remove_px(margin_left)));
+        var max = Math.max(x_v,margin_left_v);
+        info["x"] = max + "";
+    }
+}
+
+/**
+ * y
+ */
+function set_attr_y(info,map){
+    var y = map["top"];
+    var margin_top = map["margin_top"];
+    if (y || margin_top){
+        var y_v = parseFloat(numValue(remove_px(y)));
+        var margin_top_v = parseFloat(numValue(remove_px(margin_top)));
+        var max = Math.max(y_v,margin_top_v);
+        info["y"] = max + "";
+    }
+}
+
+/**
+ * right
+ */
+function set_attr_right(info,map){
+    var right = map["right"];
+    var margin_right = map["margin_right"];
+    if (right || margin_right){
+        var right_v = parseFloat(numValue(remove_px(right)));
+        var margin_right_v = parseFloat(numValue(remove_px(margin_right)));
+        var max = Math.max(right_v,margin_right_v);
+        info["right"] = max + "";
+    }
+}
+
+/**
+ * bottom
+ */
+function set_attr_bottom(info,map){
+    var bottom = map["bottom"];
+    var margin_bottom = map["margin_bottom"];
+    if (bottom || margin_bottom){
+        var bottom_v = parseFloat(numValue(remove_px(bottom)));
+        var margin_bottom_v = parseFloat(numValue(remove_px(margin_bottom)));
+        var max = Math.max(bottom_v,margin_bottom_v);
+        info["bottom"] = max + "";
+    }
+}
+
+/**
+ * width
+ */
+function set_attr_width(info,map){
+    var width = map["width"];
+    if (width){
+        if (width.length > 0)info["width"] = numValue(remove_px(width));
+    }
+}
+
+function get_attr_width(map){
+    var width = map["width"];
+    if (width && width.length > 0){
+        return parseFloat(numValue(remove_px(width)));
+    }
+    return 0;
+}
+
+//------------------- 导出公共模块 -------------------
+
+
+

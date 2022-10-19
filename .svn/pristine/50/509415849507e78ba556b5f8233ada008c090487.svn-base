@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="./flexible.js"></script>
+		<link rel="stylesheet" type="text/css" href="./common.css" />
+		<link rel="stylesheet" type="text/css" href="./index.css" />
+		<link rel="stylesheet" type="text/css" href="./tools.css" />
+		<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+		</script>
+	</head>
+	<body>
+
+		<div class="page flex-col">
+			<div class="section13 flex-col">
+				<div class="layer1 flex-col">
+					<div class="main10 flex-row">
+						<span class="txt4">即拍证件照</span>
+					</div>
+					<div class="main11 flex-row justify-between">
+						<span class="txt5">免费电子照</span>
+						<div class="main12 flex-col"></div>
+						<span class="info8">100+场景</span>
+						<div class="main13 flex-col"></div>
+						<span class="word10">快速出片</span>
+					</div>
+					<div class="main14 flex-row">
+						<div class="bd2 flex-col">
+							<div class="bd3 flex-row justify-between">
+								<div class="wrap5 flex-col"></div>
+								<span class="info2">搜索</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="layer2 flex-row">
+					<div class="mod1-0 flex-col">
+						<div class="box1-0 flex-col">
+							<img class="label33-0" referrerpolicy="no-referrer"
+								src="./img/SketchPng9290b997d1bba19283072b0346a45c5296c8bf81960005a3154be8551404bc80.png" />
+							<span class="info3-0">大一寸</span>
+							<span class="info4-0">25×35mm</span>
+						</div>
+					</div>
+					<div class="mod1-1 flex-col">
+						<div class="box1-1 flex-col">
+							<img class="label33-1" referrerpolicy="no-referrer"
+								src="./img/SketchPng9290b997d1bba19283072b0346a45c5296c8bf81960005a3154be8551404bc80.png" />
+							<span class="info3-1">两寸</span>
+							<span class="info4-1">25×35mm</span>
+						</div>
+					</div>
+					<div class="mod1-2 flex-col">
+						<div class="box1-2 flex-col">
+							<img class="label33-2" referrerpolicy="no-referrer"
+								src="./img/SketchPng9290b997d1bba19283072b0346a45c5296c8bf81960005a3154be8551404bc80.png" />
+							<span class="info3-2">小两寸</span>
+							<span class="info4-2">25×35mm</span>
+						</div>
+					</div>
+				</div>
+				<div class="mod5 flex-row justify-between">
+					<div class="box14 flex-col"></div>
+					<span class="word1">拍摄指南</span>
+				</div>
+				<div class="layer5 flex-col"></div>
+			</div>
+			<div class="block6 flex-col">
+				<div class="main15 flex-col justify-between">
+					<div class="bd14 flex-col">
+						<div class="group1 flex-row">
+							<span class="word14">9:41</span>
+							<img class="icon31" referrerpolicy="no-referrer"
+								src="./img/SketchPng8942c772138d7a728a3cb4c176b8719697da171bb30fcde2f4e0dee330cf5c46.png" />
+							<div class="box15 flex-col"></div>
+							<img class="label34" referrerpolicy="no-referrer"
+								src="./img/SketchPng94453512b80fc09beef7531f197aa618ef23723c1db4743928447c71bed4cb28.png" />
+						</div>
+					</div>
+					<div class="outer6 flex-row">
+						<img class="label35" referrerpolicy="no-referrer"
+							src="./img/SketchPngc191fe1fddbf35b4fa2b7e0eccc93338718b95bb83984192eea768d669e9c846.png" />
+						<div class="section24 flex-col"></div>
+						<div class="section25 flex-col"></div>
+						<div class="section26 flex-col"></div>
+						<div class="section27 flex-col"></div>
+						<img class="icon32" referrerpolicy="no-referrer"
+							src="./img/SketchPnga491168f9e11c09bc79956f5ec1237d2b23fc98401b0aa40381d121f56ae7f65.png" />
+					</div>
+				</div>
+				<div class="bd15 flex-col"></div>
+			</div>
+			<div class="main4 flex-col">
+				<div class="main17 flex-row justify-between">
+					<div class="layer6 flex-col">
+						<div class="wrap6 flex-col"></div>
+					</div>
+					<div class="mod7 flex-col">
+						<div class="wrap7 flex-col"></div>
+					</div>
+					<img class="label23" referrerpolicy="no-referrer"
+						src="./img/SketchPng96697efa209dea8651f8f67bf06cf0ca7f2f677fc5a40978c19ddec842ba6770.png" />
+					<img class="icon20" referrerpolicy="no-referrer"
+						src="./img/SketchPngab26b57f7743f4eebc42daf962fb2b6771d740a1d5e27081d1880834e984f031.png" />
+				</div>
+				<div class="main18 flex-row">
+					<span class="word2">常用寸照</span>
+					<span class="txt2">证件照类</span>
+					<span class="word3">学生证类</span>
+					<span class="word4">签证类</span>
+					<span class="word5">职业资格证</span>
+				</div>
+			</div>
+			<div class="main5 flex-col">
+				<div class="section11 flex-col">
+					<img class="label36" referrerpolicy="no-referrer"
+						src="./img/SketchPng9290b997d1bba19283072b0346a45c5296c8bf81960005a3154be8551404bc80.png" />
+					<span class="word6">一寸</span>
+					<span class="info5">25×35mm</span>
+				</div>
+			</div>
+			<div class="main6 flex-col">
+				<div class="mod2 flex-col">
+					<img class="label37" referrerpolicy="no-referrer"
+						src="./img/SketchPng9290b997d1bba19283072b0346a45c5296c8bf81960005a3154be8551404bc80.png" />
+					<span class="word7">两寸</span>
+					<span class="word8">25×35mm</span>
+				</div>
+			</div>
+			<div class="main7 flex-col">
+				<div class="section12 flex-col">
+					<img class="icon33" referrerpolicy="no-referrer"
+						src="./img/SketchPng9290b997d1bba19283072b0346a45c5296c8bf81960005a3154be8551404bc80.png" />
+					<span class="txt3">小一寸</span>
+					<span class="word9">25×35mm</span>
+				</div>
+			</div>
+			<div class="box11 flex-col">
+				<div class="outer14 flex-col">
+					<img class="label38" referrerpolicy="no-referrer"
+						src="./img/SketchPng00e75cdbf0bf920dab333599c939575e50e3a2a3ade298b5c851ccc11fed6e67.png" />
+				</div>
+			</div>
+		</div>
+
+		<script src="FileSaver.js"></script>
+		<script src="jszip.js"></script>
+
+		<script src="config.js"></script>
+		<script src="global_var.js"></script>
+		<script src="md5.js"></script>
+		<script src="storageutils.js"></script>
+		<script src="stringutils.js"></script>
+		<script src="pubtemp.js"></script>
+		<script src="define_dialog_temp.js"></script>
+		<script src="iostemp.js"></script>
+		<script src="ios_code_temp.js"></script>
+		<script src="swift_code_temp.js"></script>
+		<script src="androidtemp.js"></script>
+		<script src="stringtool.js"></script>
+		<script src="dom_pub.js"></script>
+		<script src="propertys.js"></script>
+		<script src="show_info.js"></script>
+		<script src="exportios.js"></script>
+		<script src="exportandroid.js"></script>
+		<script src="tools.js"></script>
+
+<!--		<script src="tools_backup.js"></script>-->
+<!--		<script src="tools_backup_encode.js"></script>-->
+
+	</body>
+</html>

@@ -1,0 +1,759 @@
+html {
+  font-size: 37.5px;
+}
+
+.page {
+  position: relative;
+  width: 10rem;
+  height: 21.654rem;
+  background-color: rgba(247, 247, 252, 1);
+  overflow: hidden;
+}
+
+.section13 {
+  width: 9.974rem;
+  height: 21.654rem;
+}
+
+.layer1 {
+  height: 7.974rem;
+  background-color: rgba(133, 127, 254, 1);
+  width: 9.974rem;
+}
+
+.main10 {
+  width: 3.734rem;
+  height: 1.067rem;
+  margin: 2.56rem 0 0 0.427rem;
+}
+
+.txt4 {
+  width: 3.734rem;
+  height: 1.067rem;
+  display: block;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 1);
+  font-size: 0.746rem;
+  font-family: PingFangSC-Regular;
+  white-space: nowrap;
+  line-height: 1.067rem;
+  text-align: center;
+}
+
+.main11 {
+  width: 5.6rem;
+  height: 0.534rem;
+  margin: 0.214rem 0 0 0.427rem;
+}
+
+.txt5 {
+  width: 2rem;
+  height: 0.534rem;
+  display: block;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 1);
+  font-size: 0.373rem;
+  font-family: PingFangSC-Regular;
+  white-space: nowrap;
+  line-height: 0.534rem;
+  text-align: center;
+}
+
+.main12 {
+  width: 0.054rem;
+  height: 0.054rem;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 50%;
+  margin-top: 0.267rem;
+}
+
+.info8 {
+  width: 1.574rem;
+  height: 0.534rem;
+  display: block;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 1);
+  font-size: 0.373rem;
+  font-family: PingFangSC-Regular;
+  white-space: nowrap;
+  line-height: 0.534rem;
+  text-align: center;
+}
+
+.main13 {
+  width: 0.054rem;
+  height: 0.054rem;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 50%;
+  margin-top: 0.267rem;
+}
+
+.word10 {
+  width: 1.494rem;
+  height: 0.534rem;
+  display: block;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 1);
+  font-size: 0.373rem;
+  font-family: PingFangSC-Regular;
+  white-space: nowrap;
+  line-height: 0.534rem;
+  text-align: center;
+}
+
+.main14 {
+  width: 1.84rem;
+  height: 0.747rem;
+  margin: 0.48rem 0 2.374rem 7.76rem;
+}
+
+.bd2 {
+  height: 0.747rem;
+  border-radius: 14px;
+  background-color: rgba(247, 247, 252, 0.2);
+  width: 1.84rem;
+}
+
+.bd3 {
+  width: 1.174rem;
+  height: 0.454rem;
+  margin: 0.16rem 0 0 0.374rem;
+}
+
+.wrap5 {
+  width: 0.4rem;
+  height: 0.4rem;
+  background: url(./img/SketchPng93118ae4aac51f1ac6585d66adb540ff4b07bca112fbaa1ac13550fc9e5e7a59.png) -0.027rem -0.027rem
+    no-repeat;
+  background-size: 0.427rem 0.427rem;
+  margin-top: 0.027rem;
+}
+
+.info2 {
+  width: 0.64rem;
+  height: 0.454rem;
+  display: block;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 1);
+  font-size: 0.32rem;
+  font-family: PingFangSC-Regular;
+  white-space: nowrap;
+  line-height: 0.454rem;
+  text-align: center;
+}
+
+.layer2 {
+  width: 9.2rem;
+  height: 3.467rem;
+  justify-content: space-between;
+  margin: 4.694rem 0 0 0.4rem;
+}
+
+.mod1-0 {
+  height: 3.467rem;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 1);
+  margin-right: 0.4rem;
+  width: 2.8rem;
+}
+
+.box1-0 {
+  width: 1.52rem;
+  height: 2.587rem;
+  margin: 0.48rem 0 0 0.64rem;
+}
+
+.label33-0 {
+  width: 0.96rem;
+  height: 1.28rem;
+  margin-left: 0.294rem;
+}
+
+.info3-0 {
+  width: 1.28rem;
+  height: 0.587rem;
+  display: block;
+  overflow-wrap: break-word;
+  color: rgba(49, 48, 51, 1);
+  font-size: 0.426rem;
+  font-family: PingFangSC-Medium;
+  white-space: nowrap;
+  line-height: 0.587rem;
+  text-align: center;
+  margin: 0.267rem 0 0 0.134rem;
+}
+
+.info4-0 {
+  width: 1.52rem;
+  height: 0.454rem;
+  display: block;
+  overflow-wrap: break-word;
+  color: rgba(121, 122, 128, 1);
+  font-size: 0.32rem;
+  font-family: PingFangSC-Regular;
+  white-space: nowrap;
+  line-height: 0.454rem;
+  text-align: center;
+}
+
+.mod1-1 {
+  height: 3.467rem;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 1);
+  margin-right: 0.4rem;
+  width: 2.8rem;
+}
+
+.box1-1 {
+  width: 1.52rem;
+  height: 2.587rem;
+  margin: 0.48rem 0 0 0.64rem;
+}
+
+.label33-1 {
+  width: 0.96rem;
+  height: 1.28rem;
+  margin-left: 0.294rem;
+}
+
+.info3-1 {
+  width: 1.28rem;
+  height: 0.587rem;
+  display: block;
+  overflow-wrap: break-word;
+  color: rgba(49, 48, 51, 1);
+  font-size: 0.426rem;
+  font-family: PingFangSC-Medium;
+  white-space: nowrap;
+  line-height: 0.587rem;
+  text-align: center;
+  margin: 0.267rem 0 0 0.134rem;
+}
+
+.info4-1 {
+  width: 1.52rem;
+  height: 0.454rem;
+  display: block;
+  overflow-wrap: break-word;
+  color: rgba(121, 122, 128, 1);
+  font-size: 0.32rem;
+  font-family: PingFangSC-Regular;
+  white-space: nowrap;
+  line-height: 0.454rem;
+  text-align: center;
+}
+
+.mod1-2 {
+  height: 3.467rem;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 1);
+  margin-right: 0.4rem;
+  width: 2.8rem;
+}
+
+.box1-2 {
+  width: 1.52rem;
+  height: 2.587rem;
+  margin: 0.48rem 0 0 0.64rem;
+}
+
+.label33-2 {
+  width: 0.96rem;
+  height: 1.28rem;
+  margin-left: 0.294rem;
+}
+
+.info3-2 {
+  width: 1.28rem;
+  height: 0.587rem;
+  display: block;
+  overflow-wrap: break-word;
+  color: rgba(49, 48, 51, 1);
+  font-size: 0.426rem;
+  font-family: PingFangSC-Medium;
+  white-space: nowrap;
+  line-height: 0.587rem;
+  text-align: center;
+  margin: 0.267rem 0 0 0.134rem;
+}
+
+.info4-2 {
+  width: 1.52rem;
+  height: 0.454rem;
+  display: block;
+  overflow-wrap: break-word;
+  color: rgba(121, 122, 128, 1);
+  font-size: 0.32rem;
+  font-family: PingFangSC-Regular;
+  white-space: nowrap;
+  line-height: 0.454rem;
+  text-align: center;
+}
+
+.mod5 {
+  width: 2.347rem;
+  height: 0.56rem;
+  margin: 0.64rem 0 0 0.507rem;
+}
+
+.box14 {
+  width: 0.48rem;
+  height: 0.507rem;
+  background: url(./img/SketchPng410248fa413f393e379ba1be3fd12d4bc5b583deab94b7a1129f667a44992a57.png) -0.027rem
+    0rem no-repeat;
+  background-size: 0.507rem 0.534rem;
+  margin-top: 0.054rem;
+}
+
+.word1 {
+  width: 1.6rem;
+  height: 0.56rem;
+  display: block;
+  overflow-wrap: break-word;
+  color: rgba(49, 48, 51, 1);
+  font-size: 0.4rem;
+  font-family: PingFangSC-Medium;
+  white-space: nowrap;
+  line-height: 0.56rem;
+  text-align: center;
+}
+
+.layer5 {
+  width: 9.04rem;
+  height: 3.84rem;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 1);
+  margin: 0.48rem 0 0 0.534rem;
+}
+
+.block6 {
+  z-index: 70;
+  height: 2.347rem;
+  width: 10rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.main15 {
+  width: 10rem;
+  height: 2.08rem;
+}
+
+.bd14 {
+  height: 1.174rem;
+  width: 10rem;
+}
+
+.group1 {
+  width: 9.067rem;
+  height: 0.48rem;
+  margin: 0.4rem 0 0 0.56rem;
+}
+
+.word14 {
+  width: 1.44rem;
+  height: 0.48rem;
+  display: block;
+  overflow-wrap: break-word;
+  color: rgba(0, 0, 0, 1);
+  font-size: 0.4rem;
+  letter-spacing: -0.30000001192092896px;
+  font-family: Helvetica;
+  white-space: nowrap;
+  line-height: 0.48rem;
+  text-align: center;
+}
+
+.icon31 {
+  width: 0.454rem;
+  height: 0.294rem;
+  margin: 0.08rem 0 0 5.84rem;
+}
+
+.box15 {
+  width: 0.427rem;
+  height: 0.294rem;
+  background: url(./img/SketchPng844e2577a5d293008bc4c73d8eff6816403b8c9c20a53b2b16a20e293a52d5c0.png)
+    0rem 0rem no-repeat;
+  background-size: 0.427rem 0.32rem;
+  margin: 0.08rem 0 0 0.134rem;
+}
+
+.label34 {
+  width: 0.667rem;
+  height: 0.32rem;
+  margin: 0.054rem 0 0 0.107rem;
+}
+
+.outer6 {
+  width: 8.987rem;
+  height: 0.64rem;
+  margin: 0.267rem 0 0 0.4rem;
+}
+
+.label35 {
+  width: 0.64rem;
+  height: 0.64rem;
+}
+
+.section24 {
+  width: 0.107rem;
+  height: 0.107rem;
+  background-color: rgba(49, 48, 51, 1);
+  border-radius: 50%;
+  margin: 0.294rem 0 0 6.88rem;
+}
+
+.section25 {
+  width: 0.16rem;
+  height: 0.16rem;
+  background-color: rgba(49, 48, 51, 1);
+  border-radius: 50%;
+  margin: 0.267rem 0 0 0.054rem;
+}
+
+.section26 {
+  width: 0.107rem;
+  height: 0.107rem;
+  background-color: rgba(49, 48, 51, 1);
+  border-radius: 50%;
+  margin: 0.294rem 0 0 0.054rem;
+}
+
+.section27 {
+  width: 0.027rem;
+  height: 0.454rem;
+  background: url(./img/SketchPng8f4356b2dd7739016244814d8635667c2ed3374e4f5e658c7eac3221fb0df307.png) -0.027rem
+    0rem no-repeat;
+  background-size: 0.054rem 0.454rem;
+  margin: 0.134rem 0 0 0.24rem;
+}
+
+.icon32 {
+  width: 0.427rem;
+  height: 0.427rem;
+  margin: 0.134rem 0 0 0.294rem;
+}
+
+.bd15 {
+  z-index: 95;
+  position: absolute;
+  left: 7.574rem;
+  top: 1.387rem;
+  width: 2.134rem;
+  height: 0.8rem;
+  border-radius: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.main4 {
+  z-index: 4;
+  height: 4.16rem;
+  border-radius: 20px;
+  background-color: rgba(247, 247, 252, 1);
+  width: 10rem;
+  position: absolute;
+  left: 0;
+  top: 6rem;
+}
+
+.main17 {
+  width: 8.854rem;
+  height: 1.067rem;
+  margin: 0.534rem 0 0 0.64rem;
+}
+
+.layer6 {
+  height: 1.067rem;
+  border-radius: 9px;
+  background-color: rgba(133, 127, 254, 1);
+  width: 1.067rem;
+}
+
+.wrap6 {
+  width: 0.694rem;
+  height: 0.614rem;
+  background: url(./img/SketchPngda1e22d7aaef4a8ee7bbd6c660b1541fc8bce096f0076430f40c1c0175501c4a.png)
+    0rem 0rem no-repeat;
+  background-size: 0.694rem 0.614rem;
+  margin: 0.267rem 0 0 0.214rem;
+}
+
+.mod7 {
+  height: 1.067rem;
+  background: url(./img/SketchPngf8c4be941e8976f584e659e65101921788ffd575474bdcf89132435ed5a08a33.png)
+    100% no-repeat;
+  width: 3.04rem;
+}
+
+.wrap7 {
+  width: 0.694rem;
+  height: 0.614rem;
+  background: url(./img/SketchPngce3e7f9c6fb3dcb6680559674e1637c40063f2eed885dd590c403f16df7f4f7b.png)
+    0rem 0rem no-repeat;
+  background-size: 0.694rem 0.614rem;
+  margin: 0.267rem 0 0 2.187rem;
+}
+
+.label23 {
+  width: 1.067rem;
+  height: 1.067rem;
+}
+
+.icon20 {
+  width: 1.067rem;
+  height: 1.067rem;
+}
+
+.main18 {
+  width: 9.28rem;
+  height: 0.454rem;
+  margin: 0.214rem 0 1.894rem 0.534rem;
+}
+
+.word2 {
+  width: 1.28rem;
+  height: 0.454rem;
+  display: block;
+  overflow-wrap: break-word;
+  color: rgba(49, 48, 51, 1);
+  font-size: 0.32rem;
+  font-family: PingFangSC-Medium;
+  white-space: nowrap;
+  line-height: 0.454rem;
+  text-align: center;
+}
+
+.txt2 {
+  width: 1.28rem;
+  height: 0.454rem;
+  display: block;
+  overflow-wrap: break-word;
+  color: rgba(49, 48, 51, 0.6);
+  font-size: 0.32rem;
+  font-family: PingFangSC-Regular;
+  white-space: nowrap;
+  line-height: 0.454rem;
+  text-align: center;
+  margin-left: 0.587rem;
+}
+
+.word3 {
+  width: 1.28rem;
+  height: 0.454rem;
+  display: block;
+  overflow-wrap: break-word;
+  color: rgba(49, 48, 51, 0.6);
+  font-size: 0.32rem;
+  font-family: PingFangSC-Regular;
+  white-space: nowrap;
+  line-height: 0.454rem;
+  text-align: center;
+  margin-left: 0.667rem;
+}
+
+.word4 {
+  width: 0.96rem;
+  height: 0.454rem;
+  display: block;
+  overflow-wrap: break-word;
+  color: rgba(49, 48, 51, 0.6);
+  font-size: 0.32rem;
+  font-family: PingFangSC-Regular;
+  white-space: nowrap;
+  line-height: 0.454rem;
+  text-align: center;
+  margin-left: 0.907rem;
+}
+
+.word5 {
+  width: 1.6rem;
+  height: 0.454rem;
+  display: block;
+  overflow-wrap: break-word;
+  color: rgba(49, 48, 51, 0.6);
+  font-size: 0.32rem;
+  font-family: PingFangSC-Regular;
+  white-space: nowrap;
+  line-height: 0.454rem;
+  text-align: center;
+  margin-left: 0.72rem;
+}
+
+.main5 {
+  z-index: 42;
+  height: 3.467rem;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 1);
+  width: 2.8rem;
+  position: absolute;
+  left: 0.4rem;
+  top: 8.8rem;
+}
+
+.section11 {
+  width: 1.52rem;
+  height: 2.587rem;
+  margin: 0.48rem 0 0 0.64rem;
+}
+
+.label36 {
+  width: 0.96rem;
+  height: 1.28rem;
+  margin-left: 0.267rem;
+}
+
+.word6 {
+  width: 0.854rem;
+  height: 0.587rem;
+  display: block;
+  overflow-wrap: break-word;
+  color: rgba(49, 48, 51, 1);
+  font-size: 0.426rem;
+  font-family: PingFangSC-Medium;
+  white-space: nowrap;
+  line-height: 0.587rem;
+  text-align: center;
+  margin: 0.267rem 0 0 0.347rem;
+}
+
+.info5 {
+  width: 1.52rem;
+  height: 0.454rem;
+  display: block;
+  overflow-wrap: break-word;
+  color: rgba(121, 122, 128, 1);
+  font-size: 0.32rem;
+  font-family: PingFangSC-Regular;
+  white-space: nowrap;
+  line-height: 0.454rem;
+  text-align: center;
+}
+
+.main6 {
+  z-index: 44;
+  height: 3.467rem;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 1);
+  width: 2.8rem;
+  position: absolute;
+  left: 3.6rem;
+  top: 8.8rem;
+}
+
+.mod2 {
+  width: 1.52rem;
+  height: 2.587rem;
+  margin: 0.48rem 0 0 0.64rem;
+}
+
+.label37 {
+  width: 0.96rem;
+  height: 1.28rem;
+  margin-left: 0.294rem;
+}
+
+.word7 {
+  width: 0.854rem;
+  height: 0.587rem;
+  display: block;
+  overflow-wrap: break-word;
+  color: rgba(49, 48, 51, 1);
+  font-size: 0.426rem;
+  font-family: PingFangSC-Medium;
+  white-space: nowrap;
+  line-height: 0.587rem;
+  text-align: center;
+  margin: 0.267rem 0 0 0.347rem;
+}
+
+.word8 {
+  width: 1.52rem;
+  height: 0.454rem;
+  display: block;
+  overflow-wrap: break-word;
+  color: rgba(121, 122, 128, 1);
+  font-size: 0.32rem;
+  font-family: PingFangSC-Regular;
+  white-space: nowrap;
+  line-height: 0.454rem;
+  text-align: center;
+}
+
+.main7 {
+  z-index: 55;
+  height: 3.467rem;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 1);
+  width: 2.8rem;
+  position: absolute;
+  left: 6.8rem;
+  top: 8.8rem;
+}
+
+.section12 {
+  width: 1.52rem;
+  height: 2.587rem;
+  margin: 0.48rem 0 0 0.64rem;
+}
+
+.icon33 {
+  width: 0.96rem;
+  height: 1.28rem;
+  margin-left: 0.294rem;
+}
+
+.txt3 {
+  width: 1.28rem;
+  height: 0.587rem;
+  display: block;
+  overflow-wrap: break-word;
+  color: rgba(49, 48, 51, 1);
+  font-size: 0.426rem;
+  font-family: PingFangSC-Medium;
+  white-space: nowrap;
+  line-height: 0.587rem;
+  text-align: center;
+  margin: 0.267rem 0 0 0.134rem;
+}
+
+.word9 {
+  width: 1.52rem;
+  height: 0.454rem;
+  display: block;
+  overflow-wrap: break-word;
+  color: rgba(121, 122, 128, 1);
+  font-size: 0.32rem;
+  font-family: PingFangSC-Regular;
+  white-space: nowrap;
+  line-height: 0.454rem;
+  text-align: center;
+}
+
+.box11 {
+  z-index: 298;
+  height: 2.24rem;
+  background: url(./img/SketchPng2c0f160b6c1955a167ae307b1271cecdc39fcee6407a14f155f843b15b09c15a.png) -0.267rem -0.267rem
+    no-repeat;
+  background-size: 10.534rem 2.774rem;
+  width: 10rem;
+  position: absolute;
+  left: 0;
+  top: 19.414rem;
+}
+
+.outer14 {
+  height: 1.334rem;
+  border-radius: 50%;
+  background: url(./img/SketchPnge0cc4e85039e4f87c555cfbc51f3d2395ef97623188a3b14c537c8f8faf2c6c9.png)
+    100% no-repeat;
+  margin-left: 4.347rem;
+  width: 1.334rem;
+}
+
+.label38 {
+  width: 1.094rem;
+  height: 1.094rem;
+  margin: 0.134rem 0 0 0.134rem;
+}

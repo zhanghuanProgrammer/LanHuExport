@@ -1,0 +1,56 @@
+
+
+
+//------------------- 弹窗模板 模块 -------------------
+
+;(function () {
+
+    //自定义命名,切换控件类型,合成控件类型 模板
+    document.writeln('      <dialog id=\"ios_switch_view_type_dialog\" class=\"fuceng\" style=\"z-index:999999;padding: 1px; border-color: white\">');
+    document.writeln('		</dialog>');
+    document.writeln('');
+    document.writeln('		<dialog id=\"android_switch_view_type_dialog\" class=\"fuceng\" style=\"z-index:999999;padding: 1px; border-color: white\">');
+    document.writeln('		</dialog>');
+    document.writeln('');
+    document.writeln('		<dialog id=\"ios_union_view_type_dialog\" class=\"fuceng\" style=\"z-index:999999;padding: 1px; border-color: white\">');
+    document.writeln('		</dialog>');
+    document.writeln('');
+    document.writeln('		<dialog id=\"android_union_view_type_dialog\" class=\"fuceng\" style=\"z-index:999999;padding: 1px; border-color: white\">');
+    document.writeln('		</dialog>');
+    document.writeln('');
+    document.writeln('		<script type=\"text/x-tmpl\" id=\"tmpl-define-dialog-father\">');
+    document.writeln('			<div style=\"display: flex;flex-direction: column;justify-content: space-between;margin: 9px;\">');
+    document.writeln('    		      {% if (o.root.datas) { %}');
+    document.writeln('    		      {% var templateValue = document.getElementById(\"tmpl-define-dialog-child\").innerHTML;var map = {};map[\"root\"] = o.root.datas; var ret = tmpl(templateValue, map); %}');
+    document.writeln('    		      {% if(ret) { %}');
+    document.writeln('    		      {%=ret%}');
+    document.writeln('    		      {% } %}');
+    document.writeln('    		      {% } %}');
+    document.writeln('    		</div>');
+    document.writeln('    	 </script>');
+    document.writeln('');
+    document.writeln('		<script type=\"text/x-tmpl\" id=\"tmpl-define-dialog-child\">');
+    document.writeln('		{% for (var i=0; i<o.root.length; i++) { %}');
+    document.writeln('			{% var subArr = o.root[i]; %}');
+    document.writeln('			<div style=\"display: flex;flex-direction: row;justify-content: space-between;\">');
+    document.writeln('			{% for (var j=0; j<subArr.length; j++) { %}');
+    document.writeln('				{% var data = subArr[j]; %}');
+    document.writeln('				<div id=\"{%=data.bg_id %}\" class=\"define_view_box_view\">');
+    document.writeln('					<img id=\"{%=data.img_id %}\" class=\"define_view_box_img\" title=\"{%=data.text %}\" src=\"{%=data.src %}\" />');
+    document.writeln('					<span id=\"{%=data.text_id %}\" class=\"define_view_box_title\" title=\"{%=data.text %}\">{%=data.text %}</span>');
+    document.writeln('				</div>');
+    document.writeln('			{% } %}');
+    document.writeln('			</div>');
+    document.writeln('		{% } %}');
+    document.writeln('    	</script>');
+
+    //设置模板
+    document.writeln('<dialog id=\"software_set_dialog\" class=\"fuceng\" style=\"z-index:999999;padding: 20px; border-color: white\">');
+    document.writeln('</dialog>');
+
+})(this);
+
+//------------------- 弹窗模板 模块 -------------------
+
+
+
