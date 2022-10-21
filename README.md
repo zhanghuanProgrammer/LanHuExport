@@ -7,6 +7,7 @@
 虽然蓝湖也支持查看代码,但体验过的人都知道,有点鸡肋或者不好用,还不如自己一行一行写布局.
 
 于是基于这个痛点,我开发了一个提升布局效率的工具,如下图所示,这是一个示例界面,demo和工具都在下方的链接里可以获取.
+![功能](https://user-images.githubusercontent.com/20348189/197098556-c4087c08-6acd-4f8d-b1d1-85ae9afd0f8a.gif)
 
 
 ![image](https://user-images.githubusercontent.com/20348189/196595303-258a714e-19b1-4738-b00b-f19f8a951bdf.png)
@@ -23,6 +24,8 @@
 那么自己的项目如何使用呢?
 
 1.下载项目源码,打开index.html,点击切换页面,将你自己的蓝湖页面代码复制进去就可以了
+![切换页面](https://user-images.githubusercontent.com/20348189/197098570-b918512b-75e5-486f-9364-4ef8a74a6e41.gif)
+
 
 ![image](https://user-images.githubusercontent.com/20348189/196596391-c398f6f7-9ddb-4d67-89d3-2e51bc098d93.png)
 
@@ -38,6 +41,7 @@
 2.中间选中的面板,单击是查看控件信息和代码,长按也是查看控件信息和代码(包括子控件)
 
 3.支持控件命名,更改控件类型,合成Button,输入框控件等等
+![控件切换类型合成类型](https://user-images.githubusercontent.com/20348189/197098585-df2f7f60-01f9-4f61-a540-9c47b02837bf.gif)
 
 
 
