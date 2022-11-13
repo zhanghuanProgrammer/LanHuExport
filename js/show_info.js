@@ -135,7 +135,8 @@ info_view_type_bg.onclick = function() {
         show_android_switch_view_type_dialog();
     }
     if (isFLUTTER()){
-
+        initDefineDialogFlutter();
+        show_flutter_switch_view_type_dialog()
     }
 };
 info_view_define_name_bg.onclick = function() {
@@ -155,7 +156,8 @@ info_view_layer_union_bg.onclick = function() {
         show_android_union_view_type_dialog();
     }
     if (isFLUTTER()){
-
+        initDefineUnionDialogFlutter();
+        show_flutter_union_view_type_dialog()
     }
 };
 info_view_code.onclick = function() {
@@ -248,8 +250,9 @@ function show_select_view_define_name(view) {
 function show_select_view_layer_union(view) {
     if (view){
         if (view.viewType && (
-            view.viewType == "label" ||
-            view.viewType == "textView"
+            view.viewType == "label" || //ios
+            view.viewType == "textView" || //android
+            view.viewType == "text" //flutter
         )){
             info_view_layer_union_bg_can_click(true);
             show_info_view_layer_union("支持合成");

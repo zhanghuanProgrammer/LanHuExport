@@ -10,7 +10,7 @@ var cur_lan = Develop_Lan_ios;
 
 const DevelopDone_Lan_ios = true;//语言-iOS 是否适配完
 const DevelopDone_Lan_android = true;//语言-安卓 是否适配完
-const DevelopDone_Lan_flutter = false;//语言-Flutter 是否适配完
+const DevelopDone_Lan_flutter = true;//语言-Flutter 是否适配完
 const DevelopDone_Lan_swift = true;//语言-Swift 是否适配完
 
 const Save_Data_Type_Define_Name_ = "define_name";//自定义控件名

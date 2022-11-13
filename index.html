@@ -150,6 +150,212 @@
 			<span style="font-size: 12px;margin-left: 4px;color: #2f2e3f;">切换页面</span>
 		</div>
 
+		<!-- 模板数据Flutter 由于我不会Flutter,所以模板写了个大概,模板很容易理解,可自行修改 -->
+		<script type='text/x-tmpl' id='tmpl-flutter-xml'>
+				Positioned(
+					left: 0,
+					top: 0,
+					child: Container(
+					  	width: {%=o.root.width %},
+					  	height: {%=o.root.height %},
+					  	{% if (o.root.bgColor) { %}color: Color({%=o.root.bgColor %}),{% } %}
+					  	{% if (o.root.views) { %}
+					  		{% var templateViewsValue = document.getElementById('tmpl-flutter-views').innerHTML;var map = {};map['root'] = o.root.views; var ret = tmpl(templateViewsValue, map); %}
+        		            {% if(ret) { %}
+        		            child: Stack(
+							  fit: StackFit.passthrough,
+							  children: <Widget>[
+							  {%=ret%}
+							  ]
+						  	),
+        		            {% } %}
+        		        {% } %}
+				  	)
+				),
+    	</script>
+
+		<script type='text/x-tmpl' id='tmpl-flutter-views'>
+
+        	{% for (var i=0; i<o.root.length; i++) { %}
+        		{% var viewInfo = o.root[i]; %}
+
+        		{% if (viewInfo.viewType == 'text') { %}
+				Positioned(
+					left: {%=viewInfo.x %},
+					top: {%=viewInfo.y %},
+					child: Container(
+						{% if (viewInfo.borderColor || viewInfo.border_width || viewInfo.border_radius) { %}
+							decoration: BoxDecoration(
+							{% if (viewInfo.border_radius) { %}borderRadius: const BorderRadius.all(const Radius.circular({%=viewInfo.border_radius %})),{% } %}
+							{% if (viewInfo.borderColor || viewInfo.border_width) { %}
+								borderSide: BorderSide(
+									{% if (viewInfo.border_width) { %} width: {%=viewInfo.border_width %},{% } %}
+									{% if (viewInfo.borderColor) { %} color: Color({%=viewInfo.borderColor %}),{% } %}
+								),
+							),
+							{% } %}
+						{% } else { %}
+						{% if (viewInfo.bgColor) { %}color: Color({%=viewInfo.bgColor %}),{% } %}
+						{% } %}dp
+					  	width: {%=viewInfo.width %},
+					  	height: {%=viewInfo.height %},
+					  	child: Text(
+						 	{% if (viewInfo.text) { %} "{%=viewInfo.text %}" {% } %},
+						 	textAlign: TextAlign.{%=viewInfo.align %},
+						 	overflow: TextOverflow.ellipsis,
+						 	style: TextStyle(
+								{% if (viewInfo.text) { %} fontFamily: "{%=viewInfo.font_family %}", {% } %}
+								fontSize: {% if (viewInfo.font) { %}{%=viewInfo.font %}{% } else { %}14{% } %},
+								color: Color({%=viewInfo.textColor %}),
+						 	),
+					    )
+				  	)
+				),
+				{% } %}
+
+        		{% if (viewInfo.viewType == 'textField') { %}
+        		Positioned(
+					left: {%=viewInfo.x %},
+					top: {%=viewInfo.y %},
+					child: Container(
+						{% if (viewInfo.borderColor || viewInfo.border_width || viewInfo.border_radius) { %}
+							decoration: BoxDecoration(
+							{% if (viewInfo.border_radius) { %}borderRadius: const BorderRadius.all(const Radius.circular({%=viewInfo.border_radius %})),{% } %}
+							{% if (viewInfo.borderColor || viewInfo.border_width) { %}
+								borderSide: BorderSide(
+									{% if (viewInfo.border_width) { %} width: {%=viewInfo.border_width %},{% } %}
+									{% if (viewInfo.borderColor) { %} color: Color({%=viewInfo.borderColor %}),{% } %}
+								),
+							),
+							{% } %}
+						{% } else { %}
+						{% if (viewInfo.bgColor) { %}color: Color({%=viewInfo.bgColor %}),{% } %}
+						{% } %}dp
+					  	width: {%=viewInfo.width %},
+					  	height: {%=viewInfo.height %},
+					  	child: TextField(
+					  		textAlign: TextAlign.start,
+						  	decoration: InputDecoration(
+						  		{% if (viewInfo.text) { %} hintText: "{%=viewInfo.text %}", {% } %}
+								hintStyle: TextStyle(color: Colors.grey),
+								hintMaxLines: 1
+						  	),
+						  	style: TextStyle(
+								{% if (viewInfo.text) { %} fontFamily: "{%=viewInfo.font_family %}", {% } %}
+								fontSize: {% if (viewInfo.font) { %}{%=viewInfo.font %}{% } else { %}14{% } %},
+								color: Color({%=viewInfo.textColor %}),
+						 	),
+						)
+				  	)
+				),
+        		{% } %}
+        		{% if (viewInfo.viewType == 'imageView') { %}
+        		Positioned(
+					left: {%=viewInfo.x %},
+					top: {%=viewInfo.y %},
+					child: Container(
+						{% if (viewInfo.borderColor || viewInfo.border_width || viewInfo.border_radius) { %}
+							decoration: BoxDecoration(
+							{% if (viewInfo.border_radius) { %}borderRadius: const BorderRadius.all(const Radius.circular({%=viewInfo.border_radius %})),{% } %}
+							{% if (viewInfo.borderColor || viewInfo.border_width) { %}
+								borderSide: BorderSide(
+									{% if (viewInfo.border_width) { %} width: {%=viewInfo.border_width %},{% } %}
+									{% if (viewInfo.borderColor) { %} color: Color({%=viewInfo.borderColor %}),{% } %}
+								),
+							),
+							{% } %}
+						{% } else { %}
+						{% if (viewInfo.bgColor) { %}color: Color({%=viewInfo.bgColor %}),{% } %}
+						{% } %}dp
+					  	width: {%=viewInfo.width %},
+					  	height: {%=viewInfo.height %},
+					  	child: Image.network(
+					  		{% if (viewInfo.image) { %}"{%=viewInfo.image %}",{% } %}
+					  		fit: BoxFit.fill
+						)
+				  	)
+				),
+        		{% } %}
+        		{% if (viewInfo.viewType == 'button') { %}
+        		Positioned(
+					left: {%=viewInfo.x %},
+					top: {%=viewInfo.y %},
+					child: Container(
+						{% if (viewInfo.borderColor || viewInfo.border_width || viewInfo.border_radius) { %}
+							decoration: BoxDecoration(
+							{% if (viewInfo.border_radius) { %}borderRadius: const BorderRadius.all(const Radius.circular({%=viewInfo.border_radius %})),{% } %}
+							{% if (viewInfo.borderColor || viewInfo.border_width) { %}
+								borderSide: BorderSide(
+									{% if (viewInfo.border_width) { %} width: {%=viewInfo.border_width %},{% } %}
+									{% if (viewInfo.borderColor) { %} color: Color({%=viewInfo.borderColor %}),{% } %}
+								),
+							),
+							{% } %}
+						{% } else { %}
+						{% if (viewInfo.bgColor) { %}color: Color({%=viewInfo.bgColor %}),{% } %}
+						{% } %}dp
+					  	width: {%=viewInfo.width %},
+					  	height: {%=viewInfo.height %},
+					  	child: SizedBox(
+							child: FlatButton(
+								padding: EdgeInsets.symmetric(horizontal: 0),
+								child: Text(
+									{% if (viewInfo.text) { %} "{%=viewInfo.text %}" {% } %},
+									textAlign: TextAlign.{%=viewInfo.align %},
+									overflow: TextOverflow.ellipsis,
+									style: TextStyle(
+										{% if (viewInfo.text) { %} fontFamily: "{%=viewInfo.font_family %}", {% } %}
+										fontSize: {% if (viewInfo.font) { %}{%=viewInfo.font %}{% } else { %}14{% } %},
+										color: Color({%=viewInfo.textColor %}),
+									),
+								),
+								onPressed: (){
+									print("点击事件");
+								},
+							)
+				  		)
+				  	)
+				),
+        		{% } %}
+        		{% if (viewInfo.viewType == 'container') { %}
+        		Positioned(
+					left: {%=viewInfo.x %},
+					top: {%=viewInfo.y %},
+					child: Container(
+						{% if (viewInfo.borderColor || viewInfo.border_width || viewInfo.border_radius) { %}
+							decoration: BoxDecoration(
+							{% if (viewInfo.border_radius) { %}borderRadius: const BorderRadius.all(const Radius.circular({%=viewInfo.border_radius %})),{% } %}
+							{% if (viewInfo.borderColor || viewInfo.border_width) { %}
+								borderSide: BorderSide(
+									{% if (viewInfo.border_width) { %} width: {%=viewInfo.border_width %},{% } %}
+									{% if (viewInfo.borderColor) { %} color: Color({%=viewInfo.borderColor %}),{% } %}
+								),
+							),
+							{% } %}
+						{% } else { %}
+						{% if (viewInfo.bgColor) { %}color: Color({%=viewInfo.bgColor %}),{% } %}
+						{% } %}dp
+					  	width: {%=viewInfo.width %},
+					  	height: {%=viewInfo.height %},
+					  	{% if (viewInfo.views) { %}
+        		            {% var templateViewsValue = document.getElementById('tmpl-flutter-views').innerHTML;var map = {};map['root'] = viewInfo.views; var ret = tmpl(templateViewsValue, map); %}
+        		            {% if(ret) { %}
+        		            child: Stack(
+							  fit: StackFit.passthrough,
+							  children: <Widget>[
+							  {%=ret%}
+							  ]
+						  	),
+        		            {% } %}
+        		        {% } %}
+				  	)
+				),
+        		{% } %}
+
+        	{% } %}
+        </script>
+		<!-- 模板数据View -->
+
 		<script src="utils/FileSaver.js"></script>
 		<script src="utils/jszip.js"></script>
 
@@ -163,6 +369,7 @@
 		<script src="template/code/ios_code_temp.js"></script>
 		<script src="template/code/swift_code_temp.js"></script>
 		<script src="template/ui/androidtemp.js"></script>
+<!--		<script src="template/ui/fluttertemp.js"></script>-->
 		<script src="utils/stringtool.js"></script>
 		<script src="utils/dom_pub_utils.js"></script>
 		<script src="js/dialog_show_hide.js"></script>

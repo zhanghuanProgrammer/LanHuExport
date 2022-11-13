@@ -10,10 +10,16 @@
     document.writeln('		<dialog id=\"android_switch_view_type_dialog\" class=\"fuceng\" style=\"z-index:999999;padding: 1px; border-color: white\">');
     document.writeln('		</dialog>');
     document.writeln('');
+    document.writeln('		<dialog id=\"flutter_switch_view_type_dialog\" class=\"fuceng\" style=\"z-index:999999;padding: 1px; border-color: white\">');
+    document.writeln('		</dialog>');
+    document.writeln('');
     document.writeln('		<dialog id=\"ios_union_view_type_dialog\" class=\"fuceng\" style=\"z-index:999999;padding: 1px; border-color: white\">');
     document.writeln('		</dialog>');
     document.writeln('');
     document.writeln('		<dialog id=\"android_union_view_type_dialog\" class=\"fuceng\" style=\"z-index:999999;padding: 1px; border-color: white\">');
+    document.writeln('		</dialog>');
+    document.writeln('');
+    document.writeln('		<dialog id=\"flutter_union_view_type_dialog\" class=\"fuceng\" style=\"z-index:999999;padding: 1px; border-color: white\">');
     document.writeln('		</dialog>');
     document.writeln('');
     document.writeln('		<script type=\"text/x-tmpl\" id=\"tmpl-define-dialog-father\">');
@@ -233,6 +239,69 @@ function hide_android_switch_view_type_dialog() {
 // 安卓
 
 
+// Flutter
+
+/**
+ * 初始化切换控件类型面板数据
+ */
+var flutter_switch_view_type_dialog_is_init = false;
+function initDefineDialogFlutter(){
+    if (flutter_switch_view_type_dialog_is_init == true)return;
+    flutter_switch_view_type_dialog_is_init = true;
+
+    var datas = new Array();
+    var data_sub1 = new Array();
+    data_sub1.push({"bg_id":"flutter_switch_view_type_bg1","img_id":"flutter_switch_view_type_img1","text_id":"flutter_switch_view_type_text1","text":"Text","src":"https://upload-images.jianshu.io/upload_images/14003450-c114e679a24d1e8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    data_sub1.push({"bg_id":"flutter_switch_view_type_bg2","img_id":"flutter_switch_view_type_img2","text_id":"flutter_switch_view_type_text2","text":"Image","src":"https://upload-images.jianshu.io/upload_images/14003450-e69ce0ad8e908007.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    data_sub1.push({"bg_id":"flutter_switch_view_type_bg3","img_id":"flutter_switch_view_type_img3","text_id":"flutter_switch_view_type_text3","text":"Button","src":"https://upload-images.jianshu.io/upload_images/14003450-5308bad9df4eb932.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    data_sub1.push({"bg_id":"flutter_switch_view_type_bg4","img_id":"flutter_switch_view_type_img4","text_id":"flutter_switch_view_type_text4","text":"Container","src":"https://upload-images.jianshu.io/upload_images/14003450-00a22844a1138a38.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    var data_sub2 = new Array();
+    data_sub2.push({"bg_id":"flutter_switch_view_type_bg5","img_id":"flutter_switch_view_type_img5","text_id":"flutter_switch_view_type_text5","text":"TextField","src":"https://upload-images.jianshu.io/upload_images/14003450-7d82eb225c1ea8da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    // data_sub2.push({"bg_id":"flutter_switch_view_type_bg7","img_id":"flutter_switch_view_type_img7","text_id":"flutter_switch_view_type_text7","text":"ScrollView","src":"https://upload-images.jianshu.io/upload_images/14003450-835c390a62e9fac4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    // data_sub2.push({"bg_id":"flutter_switch_view_type_bg8","img_id":"flutter_switch_view_type_img8","text_id":"flutter_switch_view_type_text8","text":"Switch","src":"https://upload-images.jianshu.io/upload_images/14003450-4dffa33d04f87d6e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    // data_sub2.push({"bg_id":"flutter_switch_view_type_bg10","img_id":"flutter_switch_view_type_img10","text_id":"flutter_switch_view_type_text10","text":"ProgressBar","src":"https://upload-images.jianshu.io/upload_images/14003450-2857fb5d5ba168f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    // var data_sub3 = new Array();
+    // data_sub3.push({"bg_id":"flutter_switch_view_type_bg11","img_id":"flutter_switch_view_type_img11","text_id":"flutter_switch_view_type_text11","text":"RecyclerView","src":"https://upload-images.jianshu.io/upload_images/14003450-c5eae0711075f94b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    // data_sub3.push({"bg_id":"flutter_switch_view_type_bg16","img_id":"flutter_switch_view_type_img16","text_id":"flutter_switch_view_type_text16","text":"DatePicker","src":"https://upload-images.jianshu.io/upload_images/14003450-9983042c31cfb901.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    // data_sub3.push({"bg_id":"flutter_switch_view_type_bg19","img_id":"flutter_switch_view_type_img19","text_id":"flutter_switch_view_type_text19","text":"WebView","src":"https://upload-images.jianshu.io/upload_images/14003450-ba6ad7b78384f942.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    // data_sub3.push({"bg_id":"flutter_switch_view_type_bg20","img_id":"flutter_switch_view_type_img20","text_id":"flutter_switch_view_type_text20","text":"SeekBar","src":"https://upload-images.jianshu.io/upload_images/14003450-279c6b081ff83d9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    datas.push(data_sub1,data_sub2);//data_sub3
+
+    var mapJson = {"root":{"datas":datas}};
+    var templateInputValue = document.getElementById('tmpl-define-dialog-father').innerHTML.replace(/^\n|\s+$| {6}/g,'');
+    var ret = tmpl(templateInputValue, mapJson);
+    ret = js_template_escape(ret);
+    ret = formatXml_flutter(ret);
+    var dialog = $("#flutter_switch_view_type_dialog");
+    var info_view_type_bg = $("#info_view_type_bg");
+    dialog.append(ret);
+    dialog.css("margin-left",info_view_type_bg.offset().left + "px");
+    dialog.css("margin-top",(info_view_type_bg.offset().top + 40) + "px");
+    document.getElementById("flutter_switch_view_type_dialog").addEventListener('click', function (ev) {
+        if (ev.target.nodeName === 'DIALOG')hide_flutter_switch_view_type_dialog();
+    });
+    //添加点击事件
+    dialog.find("*[class*='define_view_box_view']").on({
+        click: function (event) {
+            var text = $(this).text();
+            switch_view_type_callback(text);
+            hide_flutter_switch_view_type_dialog();
+            event.stopPropagation();
+        }
+    });
+}
+
+
+function show_flutter_switch_view_type_dialog() {
+    show_dialog("flutter_switch_view_type_dialog");
+}
+function hide_flutter_switch_view_type_dialog() {
+    hide_dialog("flutter_switch_view_type_dialog");
+}
+
+// Flutter
+
+
 // 控件合成 - OC SWIFT
 
 /**
@@ -345,6 +414,55 @@ function hide_android_union_view_type_dialog() {
 // 控件合成 - 安卓
 
 
+
+// 控件合成 - Flutter
+
+/**
+ * 初始化合成控件类型面板数据
+ */
+var flutter_union_view_type_dialog_is_init = false;
+function initDefineUnionDialogFlutter(){
+    if (flutter_union_view_type_dialog_is_init == true)return;
+    flutter_union_view_type_dialog_is_init = true;
+
+    var datas = new Array();
+    var data_sub1 = new Array();
+    data_sub1.push({"bg_id":"flutter_union_view_type_bg3","img_id":"flutter_union_view_type_img3","text_id":"flutter_union_view_type_text3","text":"Button","src":"https://upload-images.jianshu.io/upload_images/14003450-5308bad9df4eb932.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    data_sub1.push({"bg_id":"flutter_union_view_type_bg6","img_id":"flutter_union_view_type_img6","text_id":"flutter_union_view_type_text6","text":"TextField","src":"https://upload-images.jianshu.io/upload_images/14003450-619c41116d084826.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    datas.push(data_sub1);
+
+    var mapJson = {"root":{"datas":datas}};
+    var templateInputValue = document.getElementById('tmpl-define-dialog-father').innerHTML.replace(/^\n|\s+$| {6}/g,'');
+    var ret = tmpl(templateInputValue, mapJson);
+    ret = js_template_escape(ret);
+    ret = formatXml_flutter(ret);
+    var dialog = $("#flutter_union_view_type_dialog");
+    var info_view_layer_union_bg = $("#info_view_layer_union_bg");
+    dialog.append(ret);
+    dialog.css("margin-left",info_view_layer_union_bg.offset().left + "px");
+    dialog.css("margin-top",(info_view_layer_union_bg.offset().top + 40) + "px");
+    document.getElementById("flutter_union_view_type_dialog").addEventListener('click', function (ev) {
+        if (ev.target.nodeName === 'DIALOG')hide_flutter_union_view_type_dialog();
+    });
+    //添加点击事件
+    dialog.find("*[class*='define_view_box_view']").on({
+        click: function (event) {
+            var text = $(this).text();
+            union_view_type_callback(text);
+            hide_flutter_union_view_type_dialog();
+            event.stopPropagation();
+        }
+    });
+}
+
+function show_flutter_union_view_type_dialog() {
+    show_dialog("flutter_union_view_type_dialog");
+}
+function hide_flutter_union_view_type_dialog() {
+    hide_dialog("flutter_union_view_type_dialog");
+}
+
+// 控件合成 - 安卓
 
 
 

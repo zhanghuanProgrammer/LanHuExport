@@ -90,7 +90,7 @@
     document.writeln('						{% if (tempView.textColor) { %}android:textColor=\"{%=tempView.textColor %}\"{% } %}');
     document.writeln('						{% if (tempView.bgColor) { %}android:background=\"{%=tempView.bgColor %}\"{% } else { %}android:background=\"@null\"{% } %}');
     document.writeln('						>');
-    document.writeln('					</TextView>');
+    document.writeln('					</EditText>');
     document.writeln('    		{% } %}');
     document.writeln('    		{% if (tempView.viewType == \"imageView\") { %}');
     document.writeln('    		    	<ImageView');

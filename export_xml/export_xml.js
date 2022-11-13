@@ -205,7 +205,7 @@ function set_attr_font_family(info,map){
     if (isTextView(map)){
         var font_family = map["font_family"];
         if (font_family && font_family.length > 0){
-            if (isIOS() || isSWIFT() || isFLUTTER()){
+            if (isIOS() || isSWIFT()){
                 if (font_family == "PingFangSC-Regular" ||
                     font_family == "PingFangSC-Medium" ||
                     font_family == "PingFangSC-Semibold" ||
@@ -233,6 +233,29 @@ function set_attr_font_family(info,map){
                     addKeyValue(info,"font_family_for_name","Helvetica");
                 }
             }
+            if (isFLUTTER()){
+                if (font_family == "PingFangSC-Regular" ||
+                    font_family == "PingFangSC-Medium" ||
+                    font_family == "PingFangSC-Semibold" ||
+                    font_family == "PingFangSC-Light"
+                ){
+                    addKeyValue(info,"font_family",font_family);
+                }
+                if (font_family == "PingFangHK-Regular" ||
+                    font_family == "PingFangHK-Medium"
+                ){
+                    addKeyValue(info,"font_family",font_family);
+                }
+                if (font_family == "STHeitiSC-Light"){
+                    addKeyValue(info,"font_family",font_family);
+                }
+                if (font_family == "DINAlternate-Bold"){
+                    addKeyValue(info,"font_family",font_family);
+                }
+                if (font_family == "Helvetica"){
+                    addKeyValue(info,"font_family",font_family);
+                }
+            }
             if (isANDROID()){
                 if (font_family == "PingFangSC-Regular")addKeyValue(info,"font_family","sans-serif");
                 else if (font_family == "PingFangSC-Medium")addKeyValue(info,"font_family","sans-serif-medium");
@@ -255,13 +278,23 @@ function set_attr_text_align(info,map){
     if (isTextView(map)){
         var text_align = map["text_align"];
         if (text_align && text_align.length > 0) {
-            if (isIOS() || isSWIFT() || isFLUTTER()){
+            if (isIOS() || isSWIFT()){
                 if (text_align == "left") addKeyValue(info, "align", "left");
                 else if (text_align == "start") addKeyValue(info, "align", "left");
                 else if (text_align == "justify") addKeyValue(info, "align", "left");
                 else if (text_align == "match-parent") addKeyValue(info, "align", "left");
                 else if (text_align == "right") addKeyValue(info, "align", "right");
                 else if (text_align == "end") addKeyValue(info, "align", "right");
+                else if (text_align == "center") addKeyValue(info, "align", "center");
+                else addKeyValue(info, "align", "left");
+            }
+            if (isFLUTTER()){
+                if (text_align == "left") addKeyValue(info, "align", "left");
+                else if (text_align == "start") addKeyValue(info, "align", "start");
+                else if (text_align == "justify") addKeyValue(info, "align", "justify");
+                else if (text_align == "match-parent") addKeyValue(info, "align", "justify");
+                else if (text_align == "right") addKeyValue(info, "align", "right");
+                else if (text_align == "end") addKeyValue(info, "align", "end");
                 else if (text_align == "center") addKeyValue(info, "align", "center");
                 else addKeyValue(info, "align", "left");
             }
@@ -363,7 +396,7 @@ function set_attr_width_for_textView(info,map){
             if (width.length > 0){
                 if (isIOS())info["width"] = "" + (parseFloat(numValue(remove_px(width))) + 2.5);
                 if (isSWIFT())info["width"] = "" + (parseFloat(numValue(remove_px(width))) + 2.5);
-                if (isFLUTTER())info["width"] = "" + (parseFloat(numValue(remove_px(width))) + 2.5);
+                if (isFLUTTER())info["width"] = "" + (numValue(remove_px(width)));
                 if (isANDROID())info["width"] = "" + (numValue(remove_px(width)));
             }
         }
@@ -412,14 +445,14 @@ function set_attr_viewType(info,map){
                 else {
                     if (isIOS())viewType = "view";
                     if (isSWIFT())viewType = "view";
-                    if (isFLUTTER())viewType = "view";
+                    if (isFLUTTER())viewType = "container";
                     if (isANDROID())viewType = "relativeLayout";
                 }
             }
             if (tagName == "span") {
                 if (isIOS())viewType = "label";
                 if (isSWIFT())viewType = "label";
-                if (isFLUTTER())viewType = "label";
+                if (isFLUTTER())viewType = "text";
                 if (isANDROID())viewType = "textView";
             }
             if (tagName == "img") viewType = "imageView";
@@ -430,7 +463,7 @@ function set_attr_viewType(info,map){
             else {
                 if (isIOS())info["viewType"] = "view";
                 if (isSWIFT())info["viewType"] = "view";
-                if (isFLUTTER())info["viewType"] = "view";
+                if (isFLUTTER())info["viewType"] = "container";
                 if (isANDROID())info["viewType"] = "relativeLayout";
                 console.log("不识别的元素", tagName);
             }
@@ -567,7 +600,10 @@ function set_attr_image(info,map){
         var imageName = "";
         if (imgurl.includes("/img/")) imageName = mid("/img/",".",imgurl + ".");
         if (imgurl.includes("http")) imageName = midL("/",true,imgurl);
-        if (imageName && imageName.length > 0)addKeyValue(info,"image",imageName.toLowerCase());
+        if (imageName && imageName.length > 0){
+            if (isFLUTTER()) addKeyValue(info,"image",imgurl);
+            else addKeyValue(info,"image",imageName.toLowerCase());
+        }
     }
 }
 
@@ -819,7 +855,10 @@ function imageview_position_relative_special_deal(views,view){
             map_copy["idStr"] = xml_idStr();
             views.unshift(map_copy);
             //2.将这个控件变换类型,变成view
-            view["viewType"] = "view";
+            if (isIOS())view["viewType"] = "view";
+            if (isSWIFT())view["viewType"] = "view";
+            if (isFLUTTER())view["viewType"] = "container";
+            if (isANDROID())view["viewType"] = "relativeLayout";
         }
     }
 }
@@ -933,8 +972,11 @@ function conversionSetAttrValue(map){
 function conversionViewsPure() {
     var array = assembleProperty();
     view_deal_hide_position_relative(array);
-    if (isIOS() || isSWIFT() || isFLUTTER()){
+    if (isIOS() || isSWIFT()){
         array = conversionSetDefineValue(array,true);//这一行的顺序不能后移
+    }
+    if (isFLUTTER()){
+        array = conversionSetDefineValue(array,false);//这一行的顺序不能后移
     }
     if (isANDROID()){
         array = conversionSetDefineValue(array,false);//这一行的顺序不能后移
@@ -990,7 +1032,7 @@ function export_xml() {
     var templateName = "";
     if (isIOS()) templateName = "tmpl-ios-viewcontroller";
     if (isSWIFT()) templateName = "tmpl-ios-viewcontroller";
-    if (isFLUTTER()) templateName = "tmpl-ios-viewcontroller";
+    if (isFLUTTER()) templateName = "tmpl-flutter-xml";
     if (isANDROID()) templateName = "tmpl-android-xml";
     var templateInputValue = document.getElementById(templateName).innerHTML.replace(/^\n|\s+$| {6}/g,'');
     var ret = tmpl(templateInputValue, conversionTemplateJson());
@@ -998,12 +1040,16 @@ function export_xml() {
     ret = (ret);
     if (isIOS())ret = formatXml_ios(ret);
     if (isSWIFT())ret = formatXml_ios(ret);
-    if (isFLUTTER())ret = formatXml_ios(ret);
+    if (isFLUTTER())ret = formatXml_flutter(ret);
     if (isANDROID())ret = formatXml_android(ret);
 
-    if (isIOS() || isSWIFT() || isFLUTTER()){
+    if (isIOS() || isSWIFT()){
         //导出.storyboard
         saveAs(new Blob([ret]), 'export.storyboard');
+    }
+    if (isFLUTTER()){
+        //导出.storyboard
+        saveAs(new Blob([ret]), 'export.dart');
     }
     if (isANDROID()){
         //导出.xml
@@ -1018,12 +1064,12 @@ function export_xml() {
  */
 function export_xml_for_selview(selView,includeChild) {
     if (selView){
-        // console.log(selView)
+        console.log(selView)
         if (includeChild == false) delete selView["views"];
         var templateViewsValue = "";
         if (isIOS()) templateViewsValue = document.getElementById('tmpl-ios-code-views').innerHTML.replace(/^\n|\s+$| {6}/g,'');
         if (isSWIFT()) templateViewsValue = document.getElementById('tmpl-swift-code-views').innerHTML.replace(/^\n|\s+$| {6}/g,'');
-        if (isFLUTTER()) templateViewsValue = document.getElementById('tmpl-ios-code-views').innerHTML.replace(/^\n|\s+$| {6}/g,'');
+        if (isFLUTTER()) templateViewsValue = document.getElementById('tmpl-flutter-views').innerHTML.replace(/^\n|\s+$| {6}/g,'');
         if (isANDROID()) templateViewsValue = document.getElementById('tmpl-android-views').innerHTML.replace(/^\n|\s+$| {6}/g,'');
         var map = {};
         var views = new Array();
@@ -1034,9 +1080,9 @@ function export_xml_for_selview(selView,includeChild) {
             ret = js_template_escape(ret);
             if (isIOS())ret = formatCode_ios(ret);
             if (isSWIFT())ret = formatCode_swift(ret);
-            if (isFLUTTER())ret = formatCode_ios(ret);
+            if (isFLUTTER())ret = formatXml_flutter_special(ret);
             if (isANDROID())ret = formatXml_android_special(ret);
-            // console.log(ret)
+            console.log(ret)
             return ret;
         }
     }

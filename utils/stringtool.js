@@ -187,10 +187,12 @@ function getHtmlSpace(count) {
 function getSpaceFormat(count,type) {
     if (type == "ios")return getSpace(count);
     if (type == "android")return getIndentationSpace(count);
+    if (type == "flutter")return getSpace(count);
     if (type == "ios_special")return getSpecialSpace(count);
     if (type == "ios_code")return getHtmlSpace(count);
     if (type == "swift_code")return getHtmlSpace(count);
     if (type == "android_special")return getHtmlSpace(count);
+    if (type == "flutter_special")return getHtmlSpace(count);
     return getSpace(count);
 }
 
@@ -200,10 +202,12 @@ function getSpaceFormat(count,type) {
 function getJoinFormat(type) {
     if (type == "ios")return "\n";
     if (type == "android")return "\n";
+    if (type == "flutter")return "\n";
     if (type == "ios_special")return "\n";
     if (type == "ios_code")return "<br>";
     if (type == "swift_code")return "\n";
     if (type == "android_special")return "<br>";
+    if (type == "flutter_special")return "<br>";
     return "\n";
 }
 
@@ -244,6 +248,40 @@ function hasInIndex_xml(text) {
         if (text.startsWith(str) && !text.startsWith("</") && !text.startsWith("\&lt/")) { return true; }
     }
     return false;
+}
+
+function hasOutIndex_xml_flutter(text) {
+    var arr = new Array();
+    arr.push(")");
+    var ret = 0;
+    for (let i = 0; i < arr.length; i++) {
+        var str = arr[i];
+        if (text.includes(str)) { ret = 2;break; }
+    }
+    var arrPrefix = new Array();
+    arrPrefix.push("(");
+    for (let i = 0; i < arrPrefix.length; i++) {
+        var str = arrPrefix[i];
+        if (text.includes(str)) { ret = 0;break; }
+    }
+    return ret;
+}
+
+function hasInIndex_xml_flutter(text) {
+    var arr = new Array();
+    arr.push("(");
+    var ret = 0;
+    for (let i = 0; i < arr.length; i++) {
+        var str = arr[i];
+        if (text.includes(str)) { ret = true;break; }
+    }
+    var arrSuffix = new Array();
+    arrSuffix.push(")");
+    for (let i = 0; i < arrSuffix.length; i++) {
+        var str = arrSuffix[i];
+        if (text.includes(str)) { ret = false;break; }
+    }
+    return ret;
 }
 
 function hasOutIndex_code(text) {
@@ -331,6 +369,44 @@ function formatXml(text,type) {
 }
 
 /**
+ * 格式化flutter-dart
+ */
+function formatFlutterDart(text,type) {
+    var arrM = new Array();
+    var arr = text.split("\n");
+    for (let i = 0; i < arr.length; i++) {
+        var str = arr[i];
+        str = removeSpacePrefixSuffix(str);
+        if (str.length > 0){//消除空行
+            arrM.push(str);
+        }
+    }
+    var count = 0;
+    var tempStr;
+    var arrMText = new Array();
+    for (let i = 0; i < arrM.length; i++) {
+        var str = arrM[i];
+        if (str.startsWith("//") || str.startsWith("/*")){
+            arrMText.push(getSpaceFormat(count,type) + str);
+        } else {
+            tempStr = str;
+            if(hasOutIndex_xml_flutter(tempStr) == 1){
+                arrMText.push(getSpaceFormat(count,type) + tempStr);
+                count--;if (count == -1) count = 0;
+            }else if (hasOutIndex_xml_flutter(tempStr) > 0){
+                count--;if (count == -1) count = 0;
+                arrMText.push(getSpaceFormat(count,type) + tempStr);
+            }else {
+                arrMText.push(getSpaceFormat(count,type) + tempStr);
+            }
+            if (hasInIndex_xml_flutter(tempStr))count ++;
+        }
+    }
+    text = arrMText.join(getJoinFormat(type));
+    return text;
+}
+
+/**
  * 格式化android_xml
  */
 function formatXml_android(text) {
@@ -343,6 +419,21 @@ function formatXml_android(text) {
 function formatXml_android_special(text) {
     text = xml_for_html_show(text);
     return formatXml(text,"android_special");
+}
+
+/**
+ * 格式化flutter_xml
+ */
+function formatXml_flutter(text) {
+    return formatFlutterDart(text,"flutter");
+}
+
+/**
+ * 格式化flutter_special_xml
+ */
+function formatXml_flutter_special(text) {
+    text = xml_for_html_show(text);
+    return formatFlutterDart(text,"flutter_special");
 }
 
 /**
@@ -415,7 +506,7 @@ function formatCode_ios(text) {
 }
 
 /**
- * 格式化ios_code
+ * 格式化swift_code
  */
 function formatCode_swift(text) {
     var code = formatCode(text,"swift_code");
@@ -488,7 +579,9 @@ function rgba_to_hex(rgba){
         }
         if (hexs.length > 0) {
             var hexStr = hexs.join("");
-            if (hexStr != "00000000") return "#" + hexStr;
+            var preStr = "#";
+            if (isFLUTTER()) preStr = (hexs.length <= 3) ? "0xFF" : "0x";
+            if (hexStr != "00000000") return preStr + hexStr;
         }
     }
     return "";
