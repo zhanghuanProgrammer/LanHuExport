@@ -441,7 +441,12 @@ function set_attr_viewType(info,map){
         if (tagName){
             tagName = tagName.toLowerCase();
             if (tagName == "div") {//特殊一点
-                if(isImgTypeView(map)) viewType = "imageView";
+                if(isImgTypeView(map)) {
+                    if (isIOS())viewType = "imageView";
+                    if (isSWIFT())viewType = "imageView";
+                    if (isFLUTTER())viewType = "image";
+                    if (isANDROID())viewType = "imageView";
+                }
                 else {
                     if (isIOS())viewType = "view";
                     if (isSWIFT())viewType = "view";
@@ -455,7 +460,12 @@ function set_attr_viewType(info,map){
                 if (isFLUTTER())viewType = "text";
                 if (isANDROID())viewType = "textView";
             }
-            if (tagName == "img") viewType = "imageView";
+            if (tagName == "img") {
+                if (isIOS())viewType = "imageView";
+                if (isSWIFT())viewType = "imageView";
+                if (isFLUTTER())viewType = "image";
+                if (isANDROID())viewType = "imageView";
+            }
             if (tagName == "button" && (auto_discern_button || (map["text"] && map["text"].length > 0))){
                 viewType = "button";
             }

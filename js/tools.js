@@ -116,6 +116,7 @@ function checkIsLongTapView(className){var ret = className == longTapClassName;l
 function page_element_add_event() {
     $('*').css({"visibility":"visible"});
 
+    //左边页面page面板的点击和长按,鼠标经过和离开
     $('*[class^="page "]').find("*").on({
         mousedown: function(event) {
             var className = $(this).prop("class");
@@ -155,10 +156,19 @@ function page_element_add_event() {
             }
             event.stopPropagation();
         },
-        mouseover: function (event) { $(this).css({"outline":"red dashed 1px"});event.stopPropagation(); },
-        mouseout: function (event) { $(this).css({"outline":""}); event.stopPropagation(); }
+        mouseover: function (event) {
+            $(this).css({"outline":"red dashed 1px"});
+            $(this).parentNode.css({"outline":"red dashed 1px"});
+            event.stopPropagation();
+        },
+        mouseout: function (event) {
+            $(this).css({"outline":""});
+            $(this).parentNode.css({"outline":""});
+            event.stopPropagation();
+        }
     });
 
+    //右边页面page面板的点击和长按,鼠标经过和离开
     $('*[class^="page_copy"]').find("*").on({
         mousedown: function(event) {
             var className = $(this).prop("class");
@@ -214,7 +224,9 @@ function page_element_add_event() {
                     return;
                 }
             }
-            $(this).css({"outline":"blue dashed 1px"});event.stopPropagation();
+            $(this).css({"outline":"blue dashed 1px"});
+            $(this).parentNode.css({"outline":"blue dashed 1px"});
+            event.stopPropagation();
         },
         mouseout: function (event) {
             if(page_copy_sel_view_class != null){
@@ -224,7 +236,9 @@ function page_element_add_event() {
                     return;
                 }
             }
-            $(this).css({"outline":""}); event.stopPropagation();
+            $(this).css({"outline":""});
+            $(this).parentNode.css({"outline":""});
+            event.stopPropagation();
         }
     });
 }
