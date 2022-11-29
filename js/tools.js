@@ -158,12 +158,12 @@ function page_element_add_event() {
         },
         mouseover: function (event) {
             $(this).css({"outline":"red dashed 1px"});
-            $(this).parentNode.css({"outline":"red dashed 1px"});
+            if($(this).parentNode != null) $(this).parentNode.css({"outline":"red dashed 1px"});
             event.stopPropagation();
         },
         mouseout: function (event) {
             $(this).css({"outline":""});
-            $(this).parentNode.css({"outline":""});
+            if($(this).parentNode != null) $(this).parentNode.css({"outline":""});
             event.stopPropagation();
         }
     });
@@ -225,7 +225,7 @@ function page_element_add_event() {
                 }
             }
             $(this).css({"outline":"blue dashed 1px"});
-            $(this).parentNode.css({"outline":"blue dashed 1px"});
+            if($(this).parentNode != null) $(this).parentNode.css({"outline":"blue dashed 1px"});
             event.stopPropagation();
         },
         mouseout: function (event) {
@@ -237,7 +237,7 @@ function page_element_add_event() {
                 }
             }
             $(this).css({"outline":""});
-            $(this).parentNode.css({"outline":""});
+            if($(this).parentNode != null) $(this).parentNode.css({"outline":""});
             event.stopPropagation();
         }
     });

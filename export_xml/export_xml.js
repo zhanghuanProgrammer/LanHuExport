@@ -609,7 +609,10 @@ function set_attr_image(info,map){
         if (imgurl.length <= 0)return;
         var imageName = "";
         if (imgurl.includes("/img/")) imageName = mid("/img/",".",imgurl + ".");
-        if (imgurl.includes("http")) imageName = midL("/",true,imgurl);
+        if (imgurl.includes("http")) {
+            if(imgurl.includes("\"")) imgurl = mid("http","\"",imgurl + "");
+            imageName = midL("/",true,imgurl);
+        }
         if (imageName && imageName.length > 0){
             if (isFLUTTER()) addKeyValue(info,"image",imgurl);
             else addKeyValue(info,"image",imageName.toLowerCase());
@@ -1074,7 +1077,7 @@ function export_xml() {
  */
 function export_xml_for_selview(selView,includeChild) {
     if (selView){
-        console.log(selView)
+        // console.log(selView)
         if (includeChild == false) delete selView["views"];
         var templateViewsValue = "";
         if (isIOS()) templateViewsValue = document.getElementById('tmpl-ios-code-views').innerHTML.replace(/^\n|\s+$| {6}/g,'');
@@ -1092,7 +1095,7 @@ function export_xml_for_selview(selView,includeChild) {
             if (isSWIFT())ret = formatCode_swift(ret);
             if (isFLUTTER())ret = formatXml_flutter_special(ret);
             if (isANDROID())ret = formatXml_android_special(ret);
-            console.log(ret)
+            //console.log(ret)
             return ret;
         }
     }

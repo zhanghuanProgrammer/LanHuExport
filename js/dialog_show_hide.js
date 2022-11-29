@@ -68,7 +68,7 @@
     document.writeln("					</div>");
     document.writeln("					<div class=\'flex-col\' style=\'width: 1%;height: 100%;\'></div>");
     document.writeln("					<div class=\'flex-col\' style=\'width: 32%;height: 100%;\'>");
-    document.writeln("						<span class=\'title_css\' style=\'width: 100%;height: 40px;\'>common.css(这个每个页面一般都一样)</span>");
+    document.writeln("						<span class=\'title_css\' style=\'width: 100%;height: 40px;\'>common.css(这里单个工程里都一样)</span>");
     document.writeln("						<textarea id=\'common_css_textarea\' placeholder=\'复制蓝湖 common.css 的代码放在下面的文本框\' style=\'width: 100%;height: 92%;\'></textarea>");
     document.writeln("					</div>");
     document.writeln("					<div class=\'flex-col\' style=\'width: 1%;height: 100%;\'></div>");
