@@ -1050,7 +1050,6 @@ function export_xml() {
     var templateInputValue = document.getElementById(templateName).innerHTML.replace(/^\n|\s+$| {6}/g,'');
     var ret = tmpl(templateInputValue, conversionTemplateJson());
     ret = js_template_escape(ret);
-    ret = (ret);
     if (isIOS())ret = formatXml_ios(ret);
     if (isSWIFT())ret = formatXml_ios(ret);
     if (isFLUTTER())ret = formatXml_flutter(ret);

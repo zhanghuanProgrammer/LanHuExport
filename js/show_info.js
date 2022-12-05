@@ -15,12 +15,12 @@ function add_elements() {
     $('*[class^="page "]').after(operatingAreaHTML);
 
     //添加切换语言模块界面
-    var operatingAreaHTML = document.getElementById('operating-lan').innerHTML//操作模板数据
-    $('*[class^="page_copy"]').after(operatingAreaHTML);
+    var operatingLanHTML = document.getElementById('operating-lan').innerHTML//操作模板数据
+    $('*[class^="page_copy"]').after(operatingLanHTML);
 
     //添加控件信息模块界面
-    var operatingAreaHTML = document.getElementById('show_info_view').innerHTML//操作模板数据
-    $('*[class^="operating_lan_div"]').after(operatingAreaHTML);
+    var showInfoViewHTML = document.getElementById('show_info_view').innerHTML//操作模板数据
+    $('*[class^="operating_lan_div"]').after(showInfoViewHTML);
 }
 add_elements();
 
