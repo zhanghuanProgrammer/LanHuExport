@@ -1,4 +1,12 @@
 # LanHuExport
+
+谷歌插件版的更方便,不需要去蓝湖复制,直接在蓝湖页面上就可以操作了,只需要下载加载到谷歌拓展里面
+https://github.com/zhanghuanProgrammer/LanHuExportPlugIn
+谷歌插件安装方法:https://www.somode.com/softjc/26336.html
+
+
+
+
  蓝湖页面,生成iOS,安卓,Swift,Flutter等布局控件,从网页界面上直接生成控件代码,包含文本,颜色,字体大小,控件大小边距,圆角等等属性,代码开源,代码还算规范,注释清晰,正打算学习网页开发的朋友可以练手
  
  
