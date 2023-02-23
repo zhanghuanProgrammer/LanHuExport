@@ -150,211 +150,137 @@
 			<span style="font-size: 12px;margin-left: 4px;color: #2f2e3f;">切换页面</span>
 		</div>
 
-		<!-- 模板数据Flutter 由于我不会Flutter,所以模板写了个大概,模板很容易理解,可自行修改 -->
-		<script type='text/x-tmpl' id='tmpl-flutter-xml'>
-				Positioned(
-					left: 0,
-					top: 0,
-					child: Container(
-					  	width: {%=o.root.width %},
-					  	height: {%=o.root.height %},
-					  	{% if (o.root.bgColor) { %}color: Color({%=o.root.bgColor %}),{% } %}
-					  	{% if (o.root.views) { %}
-					  		{% var templateViewsValue = document.getElementById('tmpl-flutter-views').innerHTML;var map = {};map['root'] = o.root.views; var ret = tmpl(templateViewsValue, map); %}
-        		            {% if(ret) { %}
-        		            child: Stack(
-							  fit: StackFit.passthrough,
-							  children: <Widget>[
-							  {%=ret%}
-							  ]
-						  	),
-        		            {% } %}
-        		        {% } %}
-				  	)
-				),
+		<!--控件信息显示模块-->
+		<script type='text/x-tmpl' id='show_info_view'>
+    		<div id='show_info_view_bg' class='fuceng' style='margin-left: 0px;'>
+    			<div class='subtitle'>控件信息</div>
+    			<div style='height:10px;'></div>
+    			<div class='flex-row'>
+    				<span class='item_title'>类型</span>
+    				<div id='info_view_type_bg' class='item_value flex-row' style='pointer-events: none'>
+    					<div style='width: 189px;height: 40px;' class='flex-row'>
+    						<div style='width: 150px;min-width: 150px;height: 40px;'>
+    							<span id='info_view_type'>未选择</span>
+    						</div>
+    						<img id='info_view_type_img' style='pointer-events: none;opacity: 0;height: 15px;width: 15px;margin-left: 8px;margin-top: 12px;' src='https://upload-images.jianshu.io/upload_images/14003450-345864712f07d617.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240'>
+    					</div>
+    				</div>
+    			</div>
+
+    			<div style='height:10px;'></div>
+    			<div class='flex-row'>
+    				<span class='item_title'>命名</span>
+    				<div id='info_view_define_name_bg' class='item_input_value flex-row' style='pointer-events: none'>
+    					<div style='width: 189px;height: 40px;' class='flex-row'>
+    						<div style='width: 150px;min-width: 150px;height: 40px;'>
+    							<input id='info_view_define_name' style='width: 189px;height: 40px; border: 1px;background: #f7f9fc;padding: 0px 30px 0px 8px;' placeholder='未命名'>
+    						</div>
+    						<img id='info_view_define_name_img' style='pointer-events: none; opacity: 0;height: 15px;width: 15px;margin-left: 15px;margin-top: 12px;' src='https://upload-images.jianshu.io/upload_images/14003450-ce1bfd1764a7976a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240'>
+    					</div>
+    				</div>
+    			</div>
+
+    			<div style='height:10px;'></div>
+    			<div class='flex-row'>
+    				<span class='item_title'>合成</span>
+    				<div id='info_view_layer_union_bg' class='item_value flex-row' style='pointer-events: none'>
+    					<div style='width: 189px;height: 40px;' class='flex-row'>
+    						<div style='width: 150px;min-width: 150px;height: 40px;'>
+    							<span id='info_view_layer_union'>未选择</span>
+    						</div>
+    						<img id='info_view_layer_union_img' style='pointer-events: none;opacity: 0; height: 13px;width: 13px;margin-left: 8px;margin-top: 13px;' src='https://upload-images.jianshu.io/upload_images/14003450-fdf4737aadb3c28f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240'>
+    					</div>
+    				</div>
+    			</div>
+
+    			<div style='height:10px;'></div>
+    			<div class='flex-col'>
+					<div class='flex-row'>
+						<span class='item_title'>代码</span>
+						<span id='copy_code_btn' class='title_click_css' style='width: 40px;'>复制</span>
+						<span id='edit_code_template' class='title_click_css'>编辑模板</span>
+					</div>
+    				<p id='info_view_code' class='code_item_value' style='width: 230px; height: 300px;max-height: 300px; margin-left: 24px;overflow: auto;'>
+    				</p>
+    			</div>
+    			<div style='height:50px;'></div>
+
+    			<div class='view-btn'>
+    				<div id='export_xml' class='view flex-row'>
+    					<div style='margin: auto;'>
+    						<img id='export_btn_img' style='height: 20px;width: 20px;margin-top: 9px;position: absolute;' src='https://upload-images.jianshu.io/upload_images/14003450-c89d154f59ba4ab6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240'/>
+    						<span id='export_btn_text' style='margin-left: 25px;'>生成iOS布局</span>
+    					</div>
+    				</div>
+    			</div>
+
+    		</div>
     	</script>
 
-		<script type='text/x-tmpl' id='tmpl-flutter-views'>
+		<!--切换页面模板-->
+		<dialog id='switch_page_dialog' class='fuceng' style='z-index:999999;padding: 1px; border-color: white'>
+			<div class='flex-col' style='width: 1000px;height: 500px;'>
+				<div class='flex-row' style='width: 1000px;height: 420px;'>
+					<div class='flex-col' style='width: 1%;height: 100%;background: #2878ff'></div>
+					<div class='flex-col' style='width: 32%;height: 100%;'>
+						<span class='title_css' style='width: 100%;height: 40px;'>index.html</span>
+						<textarea id='index_html_textarea' placeholder='复制蓝湖 index.html 的代码放在下面的文本框' style='width: 100%;height: 92%;'></textarea>
+					</div>
+					<div class='flex-col' style='width: 1%;height: 100%;'></div>
+					<div class='flex-col' style='width: 32%;height: 100%;'>
+						<span class='title_css' style='width: 100%;height: 40px;'>index.css</span>
+						<textarea id='index_css_textarea' placeholder='复制蓝湖 index.css 的代码放在下面的文本框' style='width: 100%;height: 92%;'></textarea>
+					</div>
+					<div class='flex-col' style='width: 1%;height: 100%;'></div>
+					<div class='flex-col' style='width: 32%;height: 100%;'>
+						<span class='title_css' style='width: 100%;height: 40px;'>common.css(同一工程里这里相同)</span>
+						<textarea id='common_css_textarea' placeholder='复制蓝湖 common.css 的代码放在下面的文本框' style='width: 100%;height: 92%;'></textarea>
+					</div>
+					<div class='flex-col' style='width: 1%;height: 100%;'></div>
+				</div>
+				<div class='flex-row' style='width: 1000px;height: 80px;'>
+					<div id='switch_page_sure_btn' class='flex-row' style='width: 250px; height: 40px;margin: auto;'>
+						<div class='view flex-row'>
+							<div style='margin: auto'>
+								<span>确 定</span>
+							</div>
+						</div>
+					</div>
+					<div id='switch_page_reset_btn' class='flex-row' style='width: 100px; height: 40px;margin: auto;position: absolute'>
+						<span class='title_click_css' style='width: 100%;height: 40px;margin-top: 20px;margin-left: 10px;'>重 置</span>
+					</div>
+				</div>
+			</div>
+		</dialog>
 
-        	{% for (var i=0; i<o.root.length; i++) { %}
-        		{% var viewInfo = o.root[i]; %}
-
-        		{% if (viewInfo.viewType == 'text') { %}
-				Positioned(
-					left: {%=viewInfo.x %},
-					top: {%=viewInfo.y %},
-					child: Container(
-						{% if (viewInfo.borderColor || viewInfo.border_width || viewInfo.border_radius) { %}
-							decoration: BoxDecoration(
-							{% if (viewInfo.border_radius) { %}borderRadius: const BorderRadius.all(const Radius.circular({%=viewInfo.border_radius %})),{% } %}
-							{% if (viewInfo.borderColor || viewInfo.border_width) { %}
-								borderSide: BorderSide(
-									{% if (viewInfo.border_width) { %} width: {%=viewInfo.border_width %},{% } %}
-									{% if (viewInfo.borderColor) { %} color: Color({%=viewInfo.borderColor %}),{% } %}
-								),
-							),
-							{% } %}
-						{% } else { %}
-						{% if (viewInfo.bgColor) { %}color: Color({%=viewInfo.bgColor %}),{% } %}
-						{% } %}dp
-					  	width: {%=viewInfo.width %},
-					  	height: {%=viewInfo.height %},
-					  	child: Text(
-						 	{% if (viewInfo.text) { %} "{%=viewInfo.text %}" {% } %},
-						 	textAlign: TextAlign.{%=viewInfo.align %},
-						 	overflow: TextOverflow.ellipsis,
-						 	style: TextStyle(
-								{% if (viewInfo.text) { %} fontFamily: "{%=viewInfo.font_family %}", {% } %}
-								fontSize: {% if (viewInfo.font) { %}{%=viewInfo.font %}{% } else { %}14{% } %},
-								color: Color({%=viewInfo.textColor %}),
-						 	),
-					    )
-				  	)
-				),
-				{% } %}
-
-        		{% if (viewInfo.viewType == 'textField') { %}
-        		Positioned(
-					left: {%=viewInfo.x %},
-					top: {%=viewInfo.y %},
-					child: Container(
-						{% if (viewInfo.borderColor || viewInfo.border_width || viewInfo.border_radius) { %}
-							decoration: BoxDecoration(
-							{% if (viewInfo.border_radius) { %}borderRadius: const BorderRadius.all(const Radius.circular({%=viewInfo.border_radius %})),{% } %}
-							{% if (viewInfo.borderColor || viewInfo.border_width) { %}
-								borderSide: BorderSide(
-									{% if (viewInfo.border_width) { %} width: {%=viewInfo.border_width %},{% } %}
-									{% if (viewInfo.borderColor) { %} color: Color({%=viewInfo.borderColor %}),{% } %}
-								),
-							),
-							{% } %}
-						{% } else { %}
-						{% if (viewInfo.bgColor) { %}color: Color({%=viewInfo.bgColor %}),{% } %}
-						{% } %}dp
-					  	width: {%=viewInfo.width %},
-					  	height: {%=viewInfo.height %},
-					  	child: TextField(
-					  		textAlign: TextAlign.start,
-						  	decoration: InputDecoration(
-						  		{% if (viewInfo.text) { %} hintText: "{%=viewInfo.text %}", {% } %}
-								hintStyle: TextStyle(color: Colors.grey),
-								hintMaxLines: 1
-						  	),
-						  	style: TextStyle(
-								{% if (viewInfo.text) { %} fontFamily: "{%=viewInfo.font_family %}", {% } %}
-								fontSize: {% if (viewInfo.font) { %}{%=viewInfo.font %}{% } else { %}14{% } %},
-								color: Color({%=viewInfo.textColor %}),
-						 	),
-						)
-				  	)
-				),
-        		{% } %}
-        		{% if (viewInfo.viewType == 'image') { %}
-        		Positioned(
-					left: {%=viewInfo.x %},
-					top: {%=viewInfo.y %},
-					child: Container(
-						{% if (viewInfo.borderColor || viewInfo.border_width || viewInfo.border_radius) { %}
-							decoration: BoxDecoration(
-							{% if (viewInfo.border_radius) { %}borderRadius: const BorderRadius.all(const Radius.circular({%=viewInfo.border_radius %})),{% } %}
-							{% if (viewInfo.borderColor || viewInfo.border_width) { %}
-								borderSide: BorderSide(
-									{% if (viewInfo.border_width) { %} width: {%=viewInfo.border_width %},{% } %}
-									{% if (viewInfo.borderColor) { %} color: Color({%=viewInfo.borderColor %}),{% } %}
-								),
-							),
-							{% } %}
-						{% } else { %}
-						{% if (viewInfo.bgColor) { %}color: Color({%=viewInfo.bgColor %}),{% } %}
-						{% } %}dp
-					  	width: {%=viewInfo.width %},
-					  	height: {%=viewInfo.height %},
-					  	child: Image.network(
-					  		{% if (viewInfo.image) { %}"{%=viewInfo.image %}",{% } %}
-					  		fit: BoxFit.fill
-						)
-				  	)
-				),
-        		{% } %}
-        		{% if (viewInfo.viewType == 'button') { %}
-        		Positioned(
-					left: {%=viewInfo.x %},
-					top: {%=viewInfo.y %},
-					child: Container(
-						{% if (viewInfo.borderColor || viewInfo.border_width || viewInfo.border_radius) { %}
-							decoration: BoxDecoration(
-							{% if (viewInfo.border_radius) { %}borderRadius: const BorderRadius.all(const Radius.circular({%=viewInfo.border_radius %})),{% } %}
-							{% if (viewInfo.borderColor || viewInfo.border_width) { %}
-								borderSide: BorderSide(
-									{% if (viewInfo.border_width) { %} width: {%=viewInfo.border_width %},{% } %}
-									{% if (viewInfo.borderColor) { %} color: Color({%=viewInfo.borderColor %}),{% } %}
-								),
-							),
-							{% } %}
-						{% } else { %}
-						{% if (viewInfo.bgColor) { %}color: Color({%=viewInfo.bgColor %}),{% } %}
-						{% } %}dp
-					  	width: {%=viewInfo.width %},
-					  	height: {%=viewInfo.height %},
-					  	child: SizedBox(
-							child: FlatButton(
-								padding: EdgeInsets.symmetric(horizontal: 0),
-								child: Text(
-									{% if (viewInfo.text) { %} "{%=viewInfo.text %}" {% } %},
-									textAlign: TextAlign.{%=viewInfo.align %},
-									overflow: TextOverflow.ellipsis,
-									style: TextStyle(
-										{% if (viewInfo.text) { %} fontFamily: "{%=viewInfo.font_family %}", {% } %}
-										fontSize: {% if (viewInfo.font) { %}{%=viewInfo.font %}{% } else { %}14{% } %},
-										color: Color({%=viewInfo.textColor %}),
-									),
-								),
-								onPressed: (){
-									print("点击事件");
-								},
-							)
-				  		)
-				  	)
-				),
-        		{% } %}
-        		{% if (viewInfo.viewType == 'container') { %}
-        		Positioned(
-					left: {%=viewInfo.x %},
-					top: {%=viewInfo.y %},
-					child: Container(
-						{% if (viewInfo.borderColor || viewInfo.border_width || viewInfo.border_radius) { %}
-							decoration: BoxDecoration(
-							{% if (viewInfo.border_radius) { %}borderRadius: const BorderRadius.all(const Radius.circular({%=viewInfo.border_radius %})),{% } %}
-							{% if (viewInfo.borderColor || viewInfo.border_width) { %}
-								borderSide: BorderSide(
-									{% if (viewInfo.border_width) { %} width: {%=viewInfo.border_width %},{% } %}
-									{% if (viewInfo.borderColor) { %} color: Color({%=viewInfo.borderColor %}),{% } %}
-								),
-							),
-							{% } %}
-						{% } else { %}
-						{% if (viewInfo.bgColor) { %}color: Color({%=viewInfo.bgColor %}),{% } %}
-						{% } %}dp
-					  	width: {%=viewInfo.width %},
-					  	height: {%=viewInfo.height %},
-					  	{% if (viewInfo.views) { %}
-        		            {% var templateViewsValue = document.getElementById('tmpl-flutter-views').innerHTML;var map = {};map['root'] = viewInfo.views; var ret = tmpl(templateViewsValue, map); %}
-        		            {% if(ret) { %}
-        		            child: Stack(
-							  fit: StackFit.passthrough,
-							  children: <Widget>[
-							  {%=ret%}
-							  ]
-						  	),
-        		            {% } %}
-        		        {% } %}
-				  	)
-				),
-        		{% } %}
-
-        	{% } %}
-        </script>
-		<!-- 模板数据View -->
+		<!--编辑模板弹窗-->
+		<dialog id='edit_code_template_dialog' class='fuceng' style='z-index:999999;padding: 1px; border-color: white'>
+			<div class='flex-col' style='width: 1000px;height: 500px;'>
+				<div class='flex-row' style='width: 1000px;height: 420px;'>
+					<div class='flex-col' style='width: 1%;height: 100%;'></div>
+					<div class='flex-col' style='width: 98%;height: 100%;'>
+						<div class='flex-row' style='width: 100%;height: 40px;'>
+							<span class='title_css' style='height: 40px;'>模板编辑</span>
+							<span onclick="window.open('https://blog.csdn.net/weixin_30251829/article/details/96874709')" class='title_click_css' style='width: 120px;height: 40px;'>查看规则手册</span>
+						</div>
+						<textarea id='edit_code_template_textarea' placeholder='请填写模板,点击左下角重置按钮,显示默认的模板' style='width: 100%;height: 92%;'></textarea>
+					</div>
+					<div class='flex-col' style='width: 1%;height: 100%;'></div>
+				</div>
+				<div class='flex-row' style='width: 1000px;height: 80px;'>
+					<div id='edit_code_template_sure_btn' class='flex-row' style='width: 250px; height: 40px;margin: auto;'>
+						<div class='view flex-row'>
+							<div style='margin: auto'>
+								<span>保 存</span>
+							</div>
+						</div>
+					</div>
+					<div id='edit_code_template_reset_btn' class='flex-row' style='width: 100px; height: 40px;margin: auto;position: absolute'>
+						<span class='title_click_css' style='width: 100%;height: 40px;margin-top: 20px;margin-left: 10px;'>重 置</span>
+					</div>
+				</div>
+			</div>
+		</dialog>
 
 		<script src="utils/FileSaver.js"></script>
 		<script src="utils/jszip.js"></script>
@@ -369,7 +295,8 @@
 		<script src="template/code/ios_code_temp.js"></script>
 		<script src="template/code/swift_code_temp.js"></script>
 		<script src="template/ui/androidtemp.js"></script>
-<!--		<script src="template/ui/fluttertemp.js"></script>-->
+		<script src="template/ui/define_ui_temp.js"></script>
+		<script src="template/ui/fluttertemp.js"></script>
 		<script src="utils/stringtool.js"></script>
 		<script src="utils/dom_pub_utils.js"></script>
 		<script src="js/dialog_show_hide.js"></script>
@@ -379,6 +306,7 @@
 		<script src="js/show_info.js"></script>
 		<script src="export_xml/export_xml.js"></script>
 		<script src="js/tools.js"></script>
+		<script src="js/edit_template.js"></script>
 		<script src="js/switch_page.js"></script>
 		<script src="js/auto_discern.js"></script>
 

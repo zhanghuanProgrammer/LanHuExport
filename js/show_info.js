@@ -42,6 +42,7 @@ function re_add_elements_for_new_page(new_page_text) {
 function info_view_type_lan(text) {
     if (isIOS())return "UI"+upperFirstCase(text);
     if (isANDROID())return upperFirstCase(text);
+    if (isDEFINE())return upperFirstCase(text);
     if (isFLUTTER())return upperFirstCase(text);
     if (isSWIFT())return "UI"+upperFirstCase(text);
     return text;
@@ -53,6 +54,7 @@ function chang_to_info_view_type_lan(text) {
         return lowerFirstCase(text);
     }
     if (isANDROID())return lowerFirstCase(text);
+    if (isDEFINE())return lowerFirstCase(text);
     if (isFLUTTER())return lowerFirstCase(text);
     if (isSWIFT()) {
         if(text.startsWith("UI"))text = text.substring(2,text.length);
@@ -134,6 +136,10 @@ info_view_type_bg.onclick = function() {
         initDefineDialogAndroid();
         show_android_switch_view_type_dialog();
     }
+    if (isDEFINE()){
+        initDefineDialogDefine();
+        show_define_switch_view_type_dialog();
+    }
     if (isFLUTTER()){
         initDefineDialogFlutter();
         show_flutter_switch_view_type_dialog()
@@ -155,15 +161,14 @@ info_view_layer_union_bg.onclick = function() {
         initDefineUnionDialogAndroid();
         show_android_union_view_type_dialog();
     }
+    if (isDEFINE()){
+        initDefineUnionDialogDefine();
+        show_define_union_view_type_dialog();
+    }
     if (isFLUTTER()){
         initDefineUnionDialogFlutter();
         show_flutter_union_view_type_dialog()
     }
-};
-info_view_code.onclick = function() {
-    var text = info_view_code.innerText;
-    text = clearCodeSpecialChar(text);
-    copyClipboard(text);
 };
 
 function info_view_type_bg_can_click(can) {
@@ -261,6 +266,7 @@ function show_select_view_layer_union(view) {
             if (isIOS())show_info_view_layer_union("仅支持UILabel合成");
             if (isSWIFT())show_info_view_layer_union("仅支持UILabel合成");
             if (isANDROID())show_info_view_layer_union("仅支持TextView合成");
+            if (isDEFINE())show_info_view_layer_union("仅支持TextView合成");
             if (isFLUTTER())show_info_view_layer_union("不支持合成");
         }
     }else {

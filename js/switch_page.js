@@ -3,6 +3,7 @@
 //------------------- 切换界面 模块 -------------------
 
 var switch_page_sure_btn = document.getElementById("switch_page_sure_btn");
+var switch_page_reset_btn = document.getElementById("switch_page_reset_btn");
 
 //切换页面点击事件
 switch_page_sure_btn.onclick = function() {
@@ -23,6 +24,23 @@ switch_page_sure_btn.onclick = function() {
     db_saveData("index_html_text",index_html_text,"");
     db_saveData("index_css_text",index_css_text,"");
     db_saveData("common_css_text",common_css_text,"");
+
+    //隐藏弹窗
+    hide_switch_page_dialog();
+
+    //重新刷新页面
+    window.location.reload();
+};
+
+//切换页面重置按钮点击事件
+switch_page_reset_btn.onclick = function() {
+    //清空当前页面的数存储据
+    db_clearCurPage();
+
+    //保存当前3个框数据
+    db_saveData("index_html_text","","");
+    db_saveData("index_css_text","","");
+    db_saveData("common_css_text","","");
 
     //隐藏弹窗
     hide_switch_page_dialog();

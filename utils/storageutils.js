@@ -97,6 +97,42 @@ function db_removePageKeys(key) {
 
 //对外使用的几个增删查改接口
 
+/**
+ * 保存数据到本地-不跟页面绑定
+ */
+function db_saveData_no_page(key,value,type) {
+    if (!db_isSupportStorage())return;
+    if (key && key.length > 0){
+        if (value && value.length > 0){
+            //2.存数据
+            localStorage_setItem(key+type, value);
+        }else {
+            db_removeData_no_page(key,type);
+        }
+    }
+}
+
+/**
+ * 读取数据-不跟页面绑定
+ */
+function db_getData_no_page(key,type) {
+    if (!db_isSupportStorage())return "";
+    if (key && key.length > 0){
+        return localStorage_getItem(key+type);
+    }
+    return "";
+}
+
+/**
+ * 删除某个数据-不跟页面绑定
+ */
+function db_removeData_no_page(key,type) {
+    if (!db_isSupportStorage())return;
+    if (key && key.length > 0){
+        localStorage_removeItem(key+type);
+    }
+}
+
 
 /**
  * 保存数据到本地

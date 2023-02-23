@@ -186,6 +186,7 @@ function getHtmlSpace(count) {
  */
 function getSpaceFormat(count,type) {
     if (type == "ios")return getSpace(count);
+    if (type == "define_code")return getSpace(count);
     if (type == "android")return getIndentationSpace(count);
     if (type == "flutter")return getSpace(count);
     if (type == "ios_special")return getSpecialSpace(count);
@@ -201,6 +202,7 @@ function getSpaceFormat(count,type) {
  */
 function getJoinFormat(type) {
     if (type == "ios")return "\n";
+    if (type == "define_code")return "\n";
     if (type == "android")return "\n";
     if (type == "flutter")return "\n";
     if (type == "ios_special")return "\n";
@@ -414,6 +416,20 @@ function formatXml_android(text) {
 }
 
 /**
+ * 格式化自定义模板代码
+ */
+function formatCode_define_for_show(text) {
+    if (text != null && text.includes("{") && text.includes("}"))return formatCode_ios(text);//这里像iOS那样格式化就行
+    return formatCodeRemoveEmptyLine(text,"<br>");//这里直接返回
+    return text;
+}
+function formatCode_define_for_txt(text) {
+    if (text != null && text.includes("{") && text.includes("}"))return formatCode_define(text);
+    return formatCodeRemoveEmptyLine(text,"\n");//这里直接返回
+    return text;
+}
+
+/**
  * 格式化android_special_xml
  */
 function formatXml_android_special(text) {
@@ -493,11 +509,39 @@ function formatCode(text,type) {
     return text;
 }
 
+function formatCodeRemoveEmptyLine(text,newLineSplit) {
+    if (text != null && text.length > 0){
+        var arrM = new Array();
+        var arr = text.split("\n");
+        for (let i = 0; i < arr.length; i++) {
+            var str = arr[i];
+            str = removeSpacePrefixSuffix(str);
+            if (str.length > 0){//消除空行
+                arrM.push(str);
+            }
+        }
+        text = arrM.join(newLineSplit);
+    }
+    return text;
+}
+
 /**
  * 格式化ios_code
  */
 function formatCode_ios(text) {
     var code = formatCode(text,"ios_code");
+    if(code && code.length > 0){
+        code = code.replaceAll("});","});\n");
+        if (code.endsWith("\n"))code = code.substring(0,code.length - 1);
+    }
+    return code;
+}
+
+/**
+ * 格式化通用代码
+ */
+function formatCode_define(text) {
+    var code = formatCode(text,"define_code");
     if(code && code.length > 0){
         code = code.replaceAll("});","});\n");
         if (code.endsWith("\n"))code = code.substring(0,code.length - 1);
@@ -542,6 +586,8 @@ function copyClipboard(text) {
             if(item.getAttribute('code'))document.body.removeChild(item);
         });
         showToast("复制成功");
+    }else{
+        showToast("内容为空");
     }
 }
 

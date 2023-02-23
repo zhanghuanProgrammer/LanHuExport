@@ -10,6 +10,9 @@
     document.writeln('		<dialog id=\"android_switch_view_type_dialog\" class=\"fuceng\" style=\"z-index:999999;padding: 1px; border-color: white\">');
     document.writeln('		</dialog>');
     document.writeln('');
+    document.writeln('		<dialog id=\"define_switch_view_type_dialog\" class=\"fuceng\" style=\"z-index:999999;padding: 1px; border-color: white\">');
+    document.writeln('		</dialog>');
+    document.writeln('');
     document.writeln('		<dialog id=\"flutter_switch_view_type_dialog\" class=\"fuceng\" style=\"z-index:999999;padding: 1px; border-color: white\">');
     document.writeln('		</dialog>');
     document.writeln('');
@@ -17,6 +20,9 @@
     document.writeln('		</dialog>');
     document.writeln('');
     document.writeln('		<dialog id=\"android_union_view_type_dialog\" class=\"fuceng\" style=\"z-index:999999;padding: 1px; border-color: white\">');
+    document.writeln('		</dialog>');
+    document.writeln('');
+    document.writeln('		<dialog id=\"define_union_view_type_dialog\" class=\"fuceng\" style=\"z-index:999999;padding: 1px; border-color: white\">');
     document.writeln('		</dialog>');
     document.writeln('');
     document.writeln('		<dialog id=\"flutter_union_view_type_dialog\" class=\"fuceng\" style=\"z-index:999999;padding: 1px; border-color: white\">');
@@ -51,39 +57,6 @@
     //设置模板
     document.writeln('<dialog id=\"software_set_dialog\" class=\"fuceng\" style=\"z-index:999999;padding: 20px; border-color: white\">');
     document.writeln('</dialog>');
-
-    //切换页面模板
-    document.writeln("<dialog id=\'switch_page_dialog\' class=\'fuceng\' style=\'z-index:999999;padding: 1px; border-color: white\'>");
-    document.writeln("			<div class=\'flex-col\' style=\'width: 1000px;height: 500px;\'>");
-    document.writeln("				<div class=\'flex-row\' style=\'width: 1000px;height: 420px;\'>");
-    document.writeln("					<div class=\'flex-col\' style=\'width: 1%;height: 100%;\'></div>");
-    document.writeln("					<div class=\'flex-col\' style=\'width: 32%;height: 100%;\'>");
-    document.writeln("						<span class=\'title_css\' style=\'width: 100%;height: 40px;\'>index.html</span>");
-    document.writeln("						<textarea id=\'index_html_textarea\' placeholder=\'复制蓝湖 index.html 的代码放在下面的文本框\' style=\'width: 100%;height: 92%;\'></textarea>");
-    document.writeln("					</div>");
-    document.writeln("					<div class=\'flex-col\' style=\'width: 1%;height: 100%;\'></div>");
-    document.writeln("					<div class=\'flex-col\' style=\'width: 32%;height: 100%;\'>");
-    document.writeln("						<span class=\'title_css\' style=\'width: 100%;height: 40px;\'>index.css</span>");
-    document.writeln("						<textarea id=\'index_css_textarea\' placeholder=\'复制蓝湖 index.css 的代码放在下面的文本框\' style=\'width: 100%;height: 92%;\'></textarea>");
-    document.writeln("					</div>");
-    document.writeln("					<div class=\'flex-col\' style=\'width: 1%;height: 100%;\'></div>");
-    document.writeln("					<div class=\'flex-col\' style=\'width: 32%;height: 100%;\'>");
-    document.writeln("						<span class=\'title_css\' style=\'width: 100%;height: 40px;\'>common.css(这里单个工程里都一样)</span>");
-    document.writeln("						<textarea id=\'common_css_textarea\' placeholder=\'复制蓝湖 common.css 的代码放在下面的文本框\' style=\'width: 100%;height: 92%;\'></textarea>");
-    document.writeln("					</div>");
-    document.writeln("					<div class=\'flex-col\' style=\'width: 1%;height: 100%;\'></div>");
-    document.writeln("				</div>");
-    document.writeln("				<div class=\'flex-row\' style=\'width: 1000px;height: 80px;\'>");
-    document.writeln("					<div id=\'switch_page_sure_btn\' class=\'flex-row\' style=\'width: 250px; height: 40px;margin: auto;\'>");
-    document.writeln("						<div class=\'view flex-row\'>");
-    document.writeln("							<div style=\'margin: auto\'>");
-    document.writeln("								<span>确 定</span>");
-    document.writeln("							</div>");
-    document.writeln("						</div>");
-    document.writeln("					</div>");
-    document.writeln("				</div>");
-    document.writeln("			</div>");
-    document.writeln("		</dialog>");
 
 })(this);
 
@@ -237,6 +210,69 @@ function hide_android_switch_view_type_dialog() {
 }
 
 // 安卓
+
+
+// 自定义模板
+
+/**
+ * 初始化切换控件类型面板数据
+ */
+var define_switch_view_type_dialog_is_init = false;
+function initDefineDialogDefine(){
+    if (define_switch_view_type_dialog_is_init == true)return;
+    define_switch_view_type_dialog_is_init = true;
+
+    var datas = new Array();
+    var data_sub1 = new Array();
+    data_sub1.push({"bg_id":"define_switch_view_type_bg1","img_id":"define_switch_view_type_img1","text_id":"define_switch_view_type_text1","text":"TextView","src":"https://upload-images.jianshu.io/upload_images/14003450-c114e679a24d1e8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    data_sub1.push({"bg_id":"define_switch_view_type_bg2","img_id":"define_switch_view_type_img2","text_id":"define_switch_view_type_text2","text":"ImageView","src":"https://upload-images.jianshu.io/upload_images/14003450-e69ce0ad8e908007.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    data_sub1.push({"bg_id":"define_switch_view_type_bg3","img_id":"define_switch_view_type_img3","text_id":"define_switch_view_type_text3","text":"Button","src":"https://upload-images.jianshu.io/upload_images/14003450-5308bad9df4eb932.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    data_sub1.push({"bg_id":"define_switch_view_type_bg4","img_id":"define_switch_view_type_img4","text_id":"define_switch_view_type_text4","text":"View","src":"https://upload-images.jianshu.io/upload_images/14003450-00a22844a1138a38.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    var data_sub2 = new Array();
+    data_sub2.push({"bg_id":"define_switch_view_type_bg5","img_id":"define_switch_view_type_img5","text_id":"define_switch_view_type_text5","text":"EditText","src":"https://upload-images.jianshu.io/upload_images/14003450-7d82eb225c1ea8da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    data_sub2.push({"bg_id":"define_switch_view_type_bg7","img_id":"define_switch_view_type_img7","text_id":"define_switch_view_type_text7","text":"ScrollView","src":"https://upload-images.jianshu.io/upload_images/14003450-835c390a62e9fac4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    data_sub2.push({"bg_id":"define_switch_view_type_bg8","img_id":"define_switch_view_type_img8","text_id":"define_switch_view_type_text8","text":"Switch","src":"https://upload-images.jianshu.io/upload_images/14003450-4dffa33d04f87d6e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    data_sub2.push({"bg_id":"define_switch_view_type_bg10","img_id":"define_switch_view_type_img10","text_id":"define_switch_view_type_text10","text":"ProgressBar","src":"https://upload-images.jianshu.io/upload_images/14003450-2857fb5d5ba168f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    var data_sub3 = new Array();
+    data_sub3.push({"bg_id":"define_switch_view_type_bg11","img_id":"define_switch_view_type_img11","text_id":"define_switch_view_type_text11","text":"ListView","src":"https://upload-images.jianshu.io/upload_images/14003450-c5eae0711075f94b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    data_sub3.push({"bg_id":"define_switch_view_type_bg16","img_id":"define_switch_view_type_img16","text_id":"define_switch_view_type_text16","text":"DatePicker","src":"https://upload-images.jianshu.io/upload_images/14003450-9983042c31cfb901.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    data_sub3.push({"bg_id":"define_switch_view_type_bg19","img_id":"define_switch_view_type_img19","text_id":"define_switch_view_type_text19","text":"WebView","src":"https://upload-images.jianshu.io/upload_images/14003450-ba6ad7b78384f942.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    data_sub3.push({"bg_id":"define_switch_view_type_bg20","img_id":"define_switch_view_type_img20","text_id":"define_switch_view_type_text20","text":"SeekBar","src":"https://upload-images.jianshu.io/upload_images/14003450-279c6b081ff83d9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    datas.push(data_sub1,data_sub2,data_sub3);
+
+    var mapJson = {"root":{"datas":datas}};
+    var templateInputValue = document.getElementById('tmpl-define-dialog-father').innerHTML.replace(/^\n|\s+$| {6}/g,'');
+    var ret = tmpl(templateInputValue, mapJson);
+    ret = js_template_escape(ret);
+    ret = formatXml_android(ret);
+    var dialog = $("#define_switch_view_type_dialog");
+    var info_view_type_bg = $("#info_view_type_bg");
+    dialog.append(ret);
+    dialog.css("margin-left",info_view_type_bg.offset().left + "px");
+    dialog.css("margin-top",(info_view_type_bg.offset().top + 40) + "px");
+    document.getElementById("define_switch_view_type_dialog").addEventListener('click', function (ev) {
+        if (ev.target.nodeName === 'DIALOG')hide_define_switch_view_type_dialog();
+    });
+    //添加点击事件
+    dialog.find("*[class*='define_view_box_view']").on({
+        click: function (event) {
+            var text = $(this).text();
+            switch_view_type_callback(text);
+            hide_define_switch_view_type_dialog();
+            event.stopPropagation();
+        }
+    });
+}
+
+
+function show_define_switch_view_type_dialog() {
+    show_dialog("define_switch_view_type_dialog");
+}
+function hide_define_switch_view_type_dialog() {
+    hide_dialog("define_switch_view_type_dialog");
+}
+
+// 自定义模板
 
 
 // Flutter
@@ -415,6 +451,57 @@ function hide_android_union_view_type_dialog() {
 
 
 
+// 控件合成 - 自定义模板
+
+/**
+ * 初始化合成控件类型面板数据
+ */
+var define_union_view_type_dialog_is_init = false;
+function initDefineUnionDialogDefine(){
+    if (define_union_view_type_dialog_is_init == true)return;
+    define_union_view_type_dialog_is_init = true;
+
+    var datas = new Array();
+    var data_sub1 = new Array();
+    data_sub1.push({"bg_id":"define_union_view_type_bg3","img_id":"define_union_view_type_img3","text_id":"define_union_view_type_text3","text":"Button","src":"https://upload-images.jianshu.io/upload_images/14003450-5308bad9df4eb932.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    data_sub1.push({"bg_id":"define_union_view_type_bg6","img_id":"define_union_view_type_img6","text_id":"define_union_view_type_text6","text":"EditText","src":"https://upload-images.jianshu.io/upload_images/14003450-619c41116d084826.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    datas.push(data_sub1);
+
+    var mapJson = {"root":{"datas":datas}};
+    var templateInputValue = document.getElementById('tmpl-define-dialog-father').innerHTML.replace(/^\n|\s+$| {6}/g,'');
+    var ret = tmpl(templateInputValue, mapJson);
+    ret = js_template_escape(ret);
+    ret = formatXml_android(ret);
+    var dialog = $("#define_union_view_type_dialog");
+    var info_view_layer_union_bg = $("#info_view_layer_union_bg");
+    dialog.append(ret);
+    dialog.css("margin-left",info_view_layer_union_bg.offset().left + "px");
+    dialog.css("margin-top",(info_view_layer_union_bg.offset().top + 40) + "px");
+    document.getElementById("define_union_view_type_dialog").addEventListener('click', function (ev) {
+        if (ev.target.nodeName === 'DIALOG')hide_define_union_view_type_dialog();
+    });
+    //添加点击事件
+    dialog.find("*[class*='define_view_box_view']").on({
+        click: function (event) {
+            var text = $(this).text();
+            union_view_type_callback(text);
+            hide_define_union_view_type_dialog();
+            event.stopPropagation();
+        }
+    });
+}
+
+function show_define_union_view_type_dialog() {
+    show_dialog("define_union_view_type_dialog");
+}
+function hide_define_union_view_type_dialog() {
+    hide_dialog("define_union_view_type_dialog");
+}
+
+// 控件合成 - 自定义模板
+
+
+
 // 控件合成 - Flutter
 
 /**
@@ -497,7 +584,6 @@ var switch_page_dialog_is_init = false;
 function init_switch_page_dialog(){
     if (switch_page_dialog_is_init == true)return;
     switch_page_dialog_is_init = true;
-
     document.getElementById("switch_page_dialog").addEventListener('click', function (ev) {
         if (ev.target.nodeName === 'DIALOG')hide_switch_page_dialog();
     });
@@ -507,10 +593,35 @@ function show_switch_page_dialog() {
     show_dialog("switch_page_dialog");
     show_switch_page_info();
 }
+
 function hide_switch_page_dialog() {
     hide_dialog("switch_page_dialog");
 }
 
 // 切换页面模块
+
+// 编辑模板弹窗模块
+
+var edit_code_template_dialog_is_init = false;
+function init_code_template_dialog(){
+    if (edit_code_template_dialog_is_init == true)return;
+    edit_code_template_dialog_is_init = true;
+
+    document.getElementById("edit_code_template_dialog").addEventListener('click', function (ev) {
+        if (ev.target.nodeName === 'DIALOG')hide_edit_code_template_dialog();
+    });
+}
+
+function show_edit_code_template_dialog() {
+    init_code_template_dialog();
+    show_dialog("edit_code_template_dialog");
+    show_edit_code_template_page_info();
+}
+
+function hide_edit_code_template_dialog() {
+    hide_dialog("edit_code_template_dialog");
+}
+
+// 编辑模板弹窗模块
 
 //------------------- 控件Dialog弹窗显示或隐藏 模块 -------------------

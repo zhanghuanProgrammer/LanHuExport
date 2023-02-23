@@ -267,6 +267,9 @@ function set_attr_font_family(info,map){
                 else if (font_family.toLowerCase().includes("bold"))addKeyValue(info,"font_family","sans-serif-medium");
                 else if (font_family.toLowerCase().includes("regular"))addKeyValue(info,"font_family","sans-serif");
             }
+            if (isDEFINE()){
+                addKeyValue(info,"font_family",font_family);
+            }
         }
     }
 }
@@ -307,6 +310,9 @@ function set_attr_text_align(info,map){
                 else if (text_align == "end") addKeyValue(info, "align", "textEnd");
                 else if (text_align == "center") addKeyValue(info, "align", "center");
                 else addKeyValue(info, "align", "textStart");
+            }
+            if (isDEFINE()){
+                addKeyValue(info, "align", text_align);
             }
         }
     }
@@ -398,6 +404,7 @@ function set_attr_width_for_textView(info,map){
                 if (isSWIFT())info["width"] = "" + (parseFloat(numValue(remove_px(width))) + 2.5);
                 if (isFLUTTER())info["width"] = "" + (numValue(remove_px(width)));
                 if (isANDROID())info["width"] = "" + (numValue(remove_px(width)));
+                if (isDEFINE())info["width"] = "" + (numValue(remove_px(width)));
             }
         }
     }
@@ -446,12 +453,14 @@ function set_attr_viewType(info,map){
                     if (isSWIFT())viewType = "imageView";
                     if (isFLUTTER())viewType = "image";
                     if (isANDROID())viewType = "imageView";
+                    if (isDEFINE())viewType = "imageView";
                 }
                 else {
                     if (isIOS())viewType = "view";
                     if (isSWIFT())viewType = "view";
                     if (isFLUTTER())viewType = "container";
                     if (isANDROID())viewType = "relativeLayout";
+                    if (isDEFINE())viewType = "view";
                 }
             }
             if (tagName == "span") {
@@ -459,12 +468,14 @@ function set_attr_viewType(info,map){
                 if (isSWIFT())viewType = "label";
                 if (isFLUTTER())viewType = "text";
                 if (isANDROID())viewType = "textView";
+                if (isDEFINE())viewType = "textView";
             }
             if (tagName == "img") {
                 if (isIOS())viewType = "imageView";
                 if (isSWIFT())viewType = "imageView";
                 if (isFLUTTER())viewType = "image";
                 if (isANDROID())viewType = "imageView";
+                if (isDEFINE())viewType = "imageView";
             }
             if (tagName == "button" && (auto_discern_button || (map["text"] && map["text"].length > 0))){
                 viewType = "button";
@@ -475,6 +486,7 @@ function set_attr_viewType(info,map){
                 if (isSWIFT())info["viewType"] = "view";
                 if (isFLUTTER())info["viewType"] = "container";
                 if (isANDROID())info["viewType"] = "relativeLayout";
+                if (isDEFINE())info["viewType"] = "view";
                 console.log("不识别的元素", tagName);
             }
         }
@@ -872,6 +884,7 @@ function imageview_position_relative_special_deal(views,view){
             if (isSWIFT())view["viewType"] = "view";
             if (isFLUTTER())view["viewType"] = "container";
             if (isANDROID())view["viewType"] = "relativeLayout";
+            if (isDEFINE())view["viewType"] = "view";
         }
     }
 }
@@ -994,6 +1007,9 @@ function conversionViewsPure() {
     if (isANDROID()){
         array = conversionSetDefineValue(array,false);//这一行的顺序不能后移
     }
+    if (isDEFINE()){
+        array = conversionSetDefineValue(array,false);//这一行的顺序不能后移
+    }
     var views = new Array();
     for (let i = 0; i < array.length; i++) {
         var map = array[i];
@@ -1047,6 +1063,7 @@ function export_xml() {
     if (isSWIFT()) templateName = "tmpl-ios-viewcontroller";
     if (isFLUTTER()) templateName = "tmpl-flutter-xml";
     if (isANDROID()) templateName = "tmpl-android-xml";
+    if (isDEFINE()) templateName = "tmpl-define-xml";
     var templateInputValue = document.getElementById(templateName).innerHTML.replace(/^\n|\s+$| {6}/g,'');
     var ret = tmpl(templateInputValue, conversionTemplateJson());
     ret = js_template_escape(ret);
@@ -1054,6 +1071,7 @@ function export_xml() {
     if (isSWIFT())ret = formatXml_ios(ret);
     if (isFLUTTER())ret = formatXml_flutter(ret);
     if (isANDROID())ret = formatXml_android(ret);
+    if (isDEFINE())ret = formatCode_define_for_txt(ret);
 
     if (isIOS() || isSWIFT()){
         //导出.storyboard
@@ -1067,6 +1085,10 @@ function export_xml() {
         //导出.xml
         saveAs(new Blob([ret]), 'export.xml');
     }
+    if (isDEFINE()){
+        //导出代码
+        saveAs(new Blob([ret]), 'export.txt');
+    }
 }
 
 /**
@@ -1078,11 +1100,7 @@ function export_xml_for_selview(selView,includeChild) {
     if (selView){
         // console.log(selView)
         if (includeChild == false) delete selView["views"];
-        var templateViewsValue = "";
-        if (isIOS()) templateViewsValue = document.getElementById('tmpl-ios-code-views').innerHTML.replace(/^\n|\s+$| {6}/g,'');
-        if (isSWIFT()) templateViewsValue = document.getElementById('tmpl-swift-code-views').innerHTML.replace(/^\n|\s+$| {6}/g,'');
-        if (isFLUTTER()) templateViewsValue = document.getElementById('tmpl-flutter-views').innerHTML.replace(/^\n|\s+$| {6}/g,'');
-        if (isANDROID()) templateViewsValue = document.getElementById('tmpl-android-views').innerHTML.replace(/^\n|\s+$| {6}/g,'');
+        var templateViewsValue = get_template();
         var map = {};
         var views = new Array();
         views.push(selView);
@@ -1094,6 +1112,7 @@ function export_xml_for_selview(selView,includeChild) {
             if (isSWIFT())ret = formatCode_swift(ret);
             if (isFLUTTER())ret = formatXml_flutter_special(ret);
             if (isANDROID())ret = formatXml_android_special(ret);
+            if (isDEFINE())ret = formatCode_define_for_show(ret);
             //console.log(ret)
             return ret;
         }

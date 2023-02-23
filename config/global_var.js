@@ -17,4 +17,8 @@ function isSWIFT() {
     return cur_lan == Develop_Lan_swift;
 }
 
+function isDEFINE() {
+    return cur_lan == Develop_Lan_define;
+}
+
 //------------------- 全局变量 模块 -------------------

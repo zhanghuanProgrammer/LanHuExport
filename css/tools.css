@@ -235,3 +235,12 @@ input::-webkit-input-placeholder { /* WebKit browsers 适配谷歌 */
     color: rgba(47, 46, 63, 0.85);
 }
 
+.title_click_css {
+    width: 63px;
+    padding-left: 5px;
+    line-height: 40px;
+    height: 40px;
+    font-size: 14px;
+    color: #2878ff;
+}
+

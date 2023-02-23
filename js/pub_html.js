@@ -28,73 +28,13 @@
     document.writeln("					<div id=\'switch_android_img\' style=\'opacity:0.3;\' class=\'operating_area\'><img title=\'切换成Android\' class=\'operating_area_img\' src=\'https://upload-images.jianshu.io/upload_images/14003450-8664c77839bdd505.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240\'/></div>");
     document.writeln("					<div id=\'switch_swift_img\' style=\'opacity:0.3;\' class=\'operating_area\'><img title=\'切换成Swift\' class=\'operating_area_img\' src=\'https://upload-images.jianshu.io/upload_images/14003450-a7fe401b30770104.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240\'/></div>");
     document.writeln("					<div id=\'switch_flutter_img\' style=\'opacity:0.3;\' class=\'operating_area\'><img title=\'切换成Flutter\' class=\'operating_area_img\' src=\'https://upload-images.jianshu.io/upload_images/14003450-ad790fab0486b973.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240\'/></div>");
+    document.writeln("					<div id=\'switch_define_img\' style=\'opacity:0.3;\' class=\'operating_area\'><img title=\'切换成自定义\' class=\'operating_area_img\' src=\'https://upload-images.jianshu.io/upload_images/14003450-d7ec89d6a2e7b885.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240\'/></div>");
     document.writeln("				</div>");
     document.writeln("			</div>");
     document.writeln("		</script>");
 
 
-    //控件信息显示模块
-    document.writeln("<script type=\'text/x-tmpl\' id=\'show_info_view\'>");
-    document.writeln("		<div id=\'show_info_view_bg\' class=\'fuceng\' style=\'margin-left: 0px;\'>");
-    document.writeln("			<div class=\'subtitle\'>控件信息</div>");
-    document.writeln("			<div style=\'height:10px;\'></div>");
-    document.writeln("			<div class=\'flex-row\'>");
-    document.writeln("				<span class=\'item_title\'>类型</span>");
-    document.writeln("				<div id=\'info_view_type_bg\' class=\'item_value flex-row\' style=\'pointer-events: none\'>");
-    document.writeln("					<div style=\'width: 189px;height: 40px;\' class=\'flex-row\'>");
-    document.writeln("						<div style=\'width: 150px;min-width: 150px;height: 40px;\'>");
-    document.writeln("							<span id=\'info_view_type\'>未选择</span>");
-    document.writeln("						</div>");
-    document.writeln("						<img id=\'info_view_type_img\' style=\'pointer-events: none;opacity: 0;height: 15px;width: 15px;margin-left: 8px;margin-top: 12px;\' src=\'https://upload-images.jianshu.io/upload_images/14003450-345864712f07d617.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240\'>");
-    document.writeln("					</div>");
-    document.writeln("				</div>");
-    document.writeln("			</div>");
-    document.writeln("");
-    document.writeln("			<div style=\'height:10px;\'></div>");
-    document.writeln("			<div class=\'flex-row\'>");
-    document.writeln("				<span class=\'item_title\'>命名</span>");
-    document.writeln("				<div id=\'info_view_define_name_bg\' class=\'item_input_value flex-row\' style=\'pointer-events: none\'>");
-    document.writeln("					<div style=\'width: 189px;height: 40px;\' class=\'flex-row\'>");
-    document.writeln("						<div style=\'width: 150px;min-width: 150px;height: 40px;\'>");
-    document.writeln("							<input id=\'info_view_define_name\' style=\'width: 189px;height: 40px; border: 1px;background: #f7f9fc;padding: 0px 30px 0px 8px;\' placeholder=\'未命名\'>");
-    document.writeln("						</div>");
-    document.writeln("						<img id=\'info_view_define_name_img\' style=\'pointer-events: none; opacity: 0;height: 15px;width: 15px;margin-left: 15px;margin-top: 12px;\' src=\'https://upload-images.jianshu.io/upload_images/14003450-ce1bfd1764a7976a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240\'>");
-    document.writeln("					</div>");
-    document.writeln("				</div>");
-    document.writeln("			</div>");
-    document.writeln("");
-    document.writeln("			<div style=\'height:10px;\'></div>");
-    document.writeln("			<div class=\'flex-row\'>");
-    document.writeln("				<span class=\'item_title\'>合成</span>");
-    document.writeln("				<div id=\'info_view_layer_union_bg\' class=\'item_value flex-row\' style=\'pointer-events: none\'>");
-    document.writeln("					<div style=\'width: 189px;height: 40px;\' class=\'flex-row\'>");
-    document.writeln("						<div style=\'width: 150px;min-width: 150px;height: 40px;\'>");
-    document.writeln("							<span id=\'info_view_layer_union\'>未选择</span>");
-    document.writeln("						</div>");
-    document.writeln("						<img id=\'info_view_layer_union_img\' style=\'pointer-events: none;opacity: 0; height: 13px;width: 13px;margin-left: 8px;margin-top: 13px;\' src=\'https://upload-images.jianshu.io/upload_images/14003450-fdf4737aadb3c28f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240\'>");
-    document.writeln("					</div>");
-    document.writeln("				</div>");
-    document.writeln("			</div>");
-    document.writeln("");
-    document.writeln("			<div style=\'height:10px;\'></div>");
-    document.writeln("			<div class=\'flex-col\'>");
-    document.writeln("				<span class=\'item_title\'>代码</span>");
-    document.writeln("				<p id=\'info_view_code\' class=\'code_item_value\' style=\'width: 230px; height: 300px;max-height: 300px; margin-left: 24px;overflow: auto;\'>");
-    document.writeln("				</p>");
-    document.writeln("			</div>");
-    document.writeln("			<div style=\'height:50px;\'></div>");
-    document.writeln("");
-    document.writeln("			<div class=\'view-btn\'>");
-    document.writeln("				<div id=\'export_xml\' class=\'view flex-row\'>");
-    document.writeln("					<div style=\'margin: auto;\'>");
-    document.writeln("						<img id=\'export_btn_img\' style=\'height: 20px;width: 20px;margin-top: 9px;position: absolute;\' src=\'https://upload-images.jianshu.io/upload_images/14003450-c89d154f59ba4ab6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240\'/>");
-    document.writeln("						<span id=\'export_btn_text\' style=\'margin-left: 25px;\'>生成iOS布局</span>");
-    document.writeln("					</div>");
-    document.writeln("				</div>");
-    document.writeln("			</div>");
-    document.writeln("");
-    document.writeln("		</div>");
-    document.writeln("		</script>");
+
 
     //软件介绍模块
     document.writeln("<script type=\'text/x-tmpl\' id=\'tmpl-set-dialog\'>");
